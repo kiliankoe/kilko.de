@@ -3,7 +3,7 @@
 {% import "macros/cards.html" as cards %}
 
 {% block content %}
-<section>
+<section class="landing">
   <div class="h-card">
     <img class="rounded u-photo" src="{{ get_url(path='img/kilian.jpg') | safe }}" alt="Kilian" />
     <a class="u-url" href="{{ config.base_url }}" hidden></a>
@@ -47,10 +47,10 @@
   {% set feed = get_section(path="feed/_index.md") %}
   {% if feed.pages %}
   <article class="recently">
-    <h2>Recently</h2>
-    <ul class="feed-list compact">
+    <h2>Feed</h2>
+    <ul class="feed-list">
       {% for page in feed.pages | slice(end=10) %}
-      <li>{{ cards::card(page=page, compact=true) }}</li>
+      <li>{{ cards::card(page=page) }}</li>
       {% endfor %}
     </ul>
     <p><a href="/feed">More on /feed →</a></p>

@@ -10,12 +10,22 @@
    look like original content to microformats consumers (future federation). #}
 {%- set is_original = category in ["posts", "reviews", "links", "talks"] %}
 <section>
-  <article{% if is_original %} class="h-entry"{% endif %}>
-    <p class="feed-item-meta">
+  <article class="detail detail-{{ category }}{% if is_original %} h-entry{% endif %}">
+    <p class="feed-item-meta detail-meta">
       <a class="feed-item-category" href="{{ cards::category_url(category=category) | trim }}">{{ category }}</a>
       <a{% if is_original %} class="u-url"{% endif %} href="{{ page.permalink | safe }}"><time class="dt-published" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time></a>
       {%- if page.extra.rating and category != "reviews" %}
       <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ cards::rating_stars(rating=page.extra.rating) }}</span>
+      {%- endif %}
+      {%- if page.extra.origin_url %}
+      <span class="feed-item-origin">
+        {{- cards::origin_icon(network=page.extra.source | default(value=category), url=page.extra.origin_url) -}}
+        {%- if page.extra.also_on %}
+        {%- for other in page.extra.also_on %}
+        {{- cards::origin_icon(network=other.network, url=other.url) -}}
+        {%- endfor %}
+        {%- endif %}
+      </span>
       {%- endif %}
     </p>
     {% if page.title %}<h1{% if is_original %} class="p-name"{% endif %}>{{ page.title }}</h1>{% endif %}
@@ -35,6 +45,12 @@
       {%- if page.extra.liked %}<span class="liked" title="liked">♥</span> {% endif %}
       {%- if page.extra.tmdb_url %}<a href="{{ page.extra.tmdb_url | safe }}">TMDB ↗</a>{% endif %}
     </p>
+    {%- if page.extra.media or page.extra.content_html %}
+    <div class="media-info">
+      {%- if page.extra.media %}{{ cards::media_item(m=page.extra.media | first) }}{% endif %}
+      {%- if page.extra.content_html %}<div class="feed-item-content">{{ page.extra.content_html | safe }}</div>{% endif %}
+    </div>
+    {%- endif %}
     {% endif %}
     {% if category == "books" %}
     {%- if page.extra.subtitle %}<p class="book-subtitle">{{ page.extra.subtitle }}</p>{% endif %}
@@ -53,7 +69,7 @@
     </p>
     {%- endif %}
     {%- if page.extra.media or page.extra.description %}
-    <div class="book-info">
+    <div class="media-info">
       {%- if page.extra.media %}{{ cards::media_item(m=page.extra.media | first) }}{% endif %}
       {%- if page.extra.description %}<div class="book-description">{{ page.extra.description | safe }}</div>{% endif %}
     </div>
@@ -71,13 +87,14 @@
     </p>
     {% endif %}
     <p class="age-warning" data-published="{{ page.date | date(format='%Y-%m-%d') }}" hidden></p>
+    {# movies render their content next to the poster above #}
     {% if page.extra.content_html %}
-    <div class="feed-item-content">{{ page.extra.content_html | safe }}</div>
+    {% if category != "movies" %}<div class="feed-item-content">{{ page.extra.content_html | safe }}</div>{% endif %}
     {% else %}
     <div{% if is_original %} class="e-content"{% endif %}>{{ page.content | safe }}</div>
     {% endif %}
-    {# books render their cover next to the blurb above #}
-    {% if page.extra.media and category != "books" %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
+    {# books and movies render their cover/poster next to the text above #}
+    {% if page.extra.media and category not in ["books", "movies"] %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
     {% if page.extra.card %}{{ cards::link_card(card=page.extra.card) }}{% endif %}
     {% if page.extra.repo %}{{ cards::repo_card(repo=page.extra.repo) }}{% endif %}
     {% if page.extra.thread %}
@@ -89,13 +106,13 @@
     </div>
     {%- endfor %}
     {% endif %}
-    {% if page.extra.origin_url %}
+    {# origin links live as icons in the header row above #}
+    {% if page.extra.stats %}
     <p class="feed-item-meta feed-item-stats">
-      {%- if page.extra.stats %}{{ cards::stats_line(stats=page.extra.stats) }} {% endif %}
-      <a href="{{ page.extra.origin_url | safe }}">View original ↗</a>
+      {{- cards::stats_line(stats=page.extra.stats) }}
       {%- if page.extra.also_on %}
       {%- for other in page.extra.also_on %}
-      · {% if other.stats %}{{ cards::stats_line(stats=other.stats) }} {% endif %}<a href="{{ other.url | safe }}">on {{ other.network }} ↗</a>
+      {%- if other.stats %} · {{ cards::stats_line(stats=other.stats) }}{% endif %}
       {%- endfor %}
       {%- endif %}
       {%- if page.extra.stats_updated %}
@@ -120,7 +137,7 @@
     {%- for entry in social %}
     <p class="feed-item-meta feed-item-stats">
       {{ cards::stats_line(stats=entry.stats) }}
-      <a href="{{ entry.url | safe }}">on {{ entry.network }} ↗</a>
+      {{ cards::origin_icon(network=entry.network, url=entry.url) }}
     </p>
     {{ cards::interaction_block(data=entry.interactions) }}
     {%- endfor %}

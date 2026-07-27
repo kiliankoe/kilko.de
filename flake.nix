@@ -1,5 +1,5 @@
 {
-  description = "kilko.de — homepage + public feed";
+  description = "kilko.de";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

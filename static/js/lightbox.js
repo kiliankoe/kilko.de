@@ -27,7 +27,7 @@
   });
 
   document
-    .querySelectorAll(".feed-item-media img, .review-image, .book-info > img")
+    .querySelectorAll(".feed-item-media img, .review-image, .media-info > img")
     .forEach(function (img) {
       img.classList.add("lightbox-target");
       img.addEventListener("click", function () {
