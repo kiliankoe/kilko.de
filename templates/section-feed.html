@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% import "macros/cards.html" as cards %}
+
+{% block title %}{{ section.title }} · {{ config.title }}{% endblock title %}
+
+{% block head %}
+<link rel="alternate" type="application/atom+xml" title="{{ section.title }}" href="{{ get_url(path=section.path ~ 'atom.xml') | safe }}" />
+{% endblock head %}
+
+{% block content %}
+<section>
+  <article class="feed">
+    <h1><a href="/">kilko.de</a>/<a href="/feed">feed</a>/{{ section.components | last }}</h1>
+    <ul class="feed-list">
+      {% for page in paginator.pages %}
+      <li>{{ cards::card(page=page) }}</li>
+      {% endfor %}
+    </ul>
+    <nav class="pagination">
+      {% if paginator.previous %}<a href="{{ paginator.previous | safe }}">← newer</a>{% endif %}
+      <span>page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+      {% if paginator.next %}<a href="{{ paginator.next | safe }}">older →</a>{% endif %}
+    </nav>
+  </article>
+</section>
+{% endblock content %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}" media="screen" />
+    <link rel="stylesheet" href="{{ get_url(path='giallo-light.css') | safe }}" media="screen and (prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="{{ get_url(path='giallo-dark.css') | safe }}" media="screen and (prefers-color-scheme: dark)" />
+    <link rel="icon" href="{{ get_url(path='favicon.ico') | safe }}" />
+    <link rel="webmention" href="https://webmention.io/kilko.de/webmention" />
+    <link rel="alternate" type="application/atom+xml" title="Original posts" href="{{ get_url(path='original.atom.xml') | safe }}" />
+    <link rel="alternate" type="application/atom+xml" title="Everything" href="{{ get_url(path='feed/atom.xml') | safe }}" />
+    {% block head %}{% endblock head %}
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="{{ config.extra.plausible_script | safe }}"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+  </head>
+  <body>
+    {% block content %}{% endblock content %}
+  </body>
+</html>

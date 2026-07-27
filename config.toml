@@ -1,0 +1,29 @@
+base_url = "https://kilko.de"
+title = "kilko.de"
+description = "Kilian's homepage and public feed"
+default_language = "en"
+
+compile_sass = true
+minify_html = false
+build_search_index = false
+
+# Feeds are enabled per-section (feed/ and its category subsections),
+# not site-wide, so the landing page doesn't emit one.
+feed_filenames = ["atom.xml"]
+feed_limit = 50
+
+taxonomies = [
+  { name = "tags", feed = true },
+]
+
+[markdown]
+bottom_footnotes = true
+
+[markdown.highlighting]
+style = "class"
+light_theme = "github-light"
+dark_theme = "github-dark"
+
+[extra]
+author = "Kilian Koeltzsch"
+plausible_script = "https://t.kilko.de/js/pa-HGnzz89nGuC93RC0_7eJU.js"

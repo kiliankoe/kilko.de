@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% import "macros/cards.html" as cards %}
+
+{% block title %}{% if page.title %}{{ page.title }} · {% endif %}{{ config.title }}{% endblock title %}
+
+{% block content %}
+{%- set category = cards::category_of(page=page) | trim %}
+{# Only authored items are marked up as h-entry — imported items must never
+   look like original content to microformats consumers (future federation). #}
+{%- set is_original = category in ["posts", "reviews", "links", "talks"] %}
+<section>
+  <article{% if is_original %} class="h-entry"{% endif %}>
+    <p class="feed-item-meta">
+      <a class="feed-item-category" href="/feed/{{ category }}">{{ category }}</a>
+      <a{% if is_original %} class="u-url"{% endif %} href="{{ page.permalink | safe }}"><time class="dt-published" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time></a>
+      {%- if page.extra.rating and category != "reviews" %}
+      <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ cards::rating_stars(rating=page.extra.rating) }}</span>
+      {%- endif %}
+    </p>
+    {% if page.title %}<h1{% if is_original %} class="p-name"{% endif %}>{{ page.title }}</h1>{% endif %}
+    {% if category == "reviews" %}
+    <p class="feed-item-meta">
+      {%- if page.extra.review_type %}<span>{{ page.extra.review_type }}</span> · {% endif %}
+      {%- if page.extra.rating %}<span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ cards::rating_stars(rating=page.extra.rating) }}</span>{% endif %}
+      {%- if page.extra.link %} · <a href="{{ page.extra.link | safe }}">details ↗</a>{% endif %}
+    </p>
+    {%- if page.extra.image %}
+    <img class="review-image u-photo" src="{{ get_url(path=page.colocated_path ~ page.extra.image) | safe }}" alt="{{ page.title }}" />
+    {%- endif %}
+    {% endif %}
+    {% if category == "links" and page.extra.url %}
+    <p><a class="u-bookmark-of" href="{{ page.extra.url | safe }}">{{ page.extra.url }} ↗</a>
+    {%- if page.extra.via %} <span class="feed-item-meta">(via <a href="{{ page.extra.via | safe }}">{{ page.extra.via }}</a>)</span>{% endif %}</p>
+    {% endif %}
+    {% if category == "talks" %}
+    <p class="feed-item-meta">
+      {%- if page.extra.event %}<span>at {% if page.extra.event_url %}<a href="{{ page.extra.event_url | safe }}">{{ page.extra.event }}</a>{% else %}{{ page.extra.event }}{% endif %}</span>{% endif %}
+      {%- if page.extra.slides %} · <a href="{{ page.extra.slides | safe }}">slides</a>{% endif %}
+      {%- if page.extra.video %} · <a href="{{ page.extra.video | safe }}">video</a>{% endif %}
+    </p>
+    {% endif %}
+    <p class="age-warning" data-published="{{ page.date | date(format='%Y-%m-%d') }}" hidden></p>
+    {% if page.extra.content_html %}
+    <div class="feed-item-content">{{ page.extra.content_html | safe }}</div>
+    {% else %}
+    <div{% if is_original %} class="e-content"{% endif %}>{{ page.content | safe }}</div>
+    {% endif %}
+    {% if page.extra.media %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
+    {% if page.extra.card %}{{ cards::link_card(card=page.extra.card) }}{% endif %}
+    {% if page.extra.origin_url %}
+    <p class="feed-item-meta feed-item-stats">
+      {%- if page.extra.stats %}{{ cards::stats_line(stats=page.extra.stats) }} {% endif %}
+      <a href="{{ page.extra.origin_url | safe }}">View original ↗</a>
+      {%- if page.extra.also_on %}
+      {%- for other in page.extra.also_on %}
+      · {% if other.stats %}{{ cards::stats_line(stats=other.stats) }} {% endif %}<a href="{{ other.url | safe }}">on {{ other.network }} ↗</a>
+      {%- endfor %}
+      {%- endif %}
+      {%- if page.extra.stats_updated %}
+      <span class="stats-as-of">(as of {{ page.extra.stats_updated | date(format="%Y-%m-%d") }})</span>
+      {%- endif %}
+    </p>
+    {% endif %}
+    {% if page.taxonomies.tags %}
+    <p class="feed-item-meta">tagged
+      {% for tag in page.taxonomies.tags %}
+      <a{% if is_original %} class="p-category"{% endif %} href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">#{{ tag }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
+    {% if page.extra.interactions %}
+    {{ cards::interaction_block(data=page.extra.interactions) }}
+    {% endif %}
+    {% if is_original %}
+    <a class="p-author h-card" href="{{ config.base_url }}" hidden>{{ config.extra.author }}</a>
+    {%- set social = load_data(path="data/social-interactions.json") | get(key=page.path, default=false) %}
+    {%- if social %}
+    {%- for entry in social %}
+    <p class="feed-item-meta feed-item-stats">
+      {{ cards::stats_line(stats=entry.stats) }}
+      <a href="{{ entry.url | safe }}">on {{ entry.network }} ↗</a>
+    </p>
+    {{ cards::interaction_block(data=entry.interactions) }}
+    {%- endfor %}
+    {%- endif %}
+    {%- set mentions = load_data(path="data/webmentions.json") | get(key=page.path, default=false) %}
+    {%- if mentions %}
+    {{ cards::interaction_block(data=mentions) }}
+    {%- endif %}
+    {% endif %}
+  </article>
+</section>
+<script src="{{ get_url(path='js/age-warning.js') | safe }}"></script>
+<script src="{{ get_url(path='js/lightbox.js') | safe }}"></script>
+{% endblock content %}

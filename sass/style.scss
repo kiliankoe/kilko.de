@@ -1,0 +1,354 @@
+:root {
+  --fg: #000;
+  --bg: #fff;
+  --fg-muted: #666;
+  --accent: #4183c4;
+  --accent-hover: #2c608f;
+  --card-border: #e0e0e0;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --fg: #fff;
+    --bg: #1a1d21;
+    --fg-muted: #9aa0a6;
+    --accent: #6b9cc9;
+    --accent-hover: #4183c4;
+    --card-border: #33383e;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  color: var(--fg);
+  background-color: var(--bg);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+img.rounded {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 15rem;
+}
+
+// Scoped to the page-level wrapper only — nested sections (e.g. Zola's
+// footnotes <section class="footnotes">) must not inherit this layout.
+body > section {
+  padding-top: 8rem;
+  text-align: center;
+}
+
+article {
+  text-align: left;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  text-align: center;
+  margin-top: -7rem !important;
+}
+
+h1 {
+  font-size: 2rem;
+
+  a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+}
+
+// Konami hint sits fixed in the corner so revealing it never shifts layout
+#postscriptum {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  margin: 0;
+}
+
+// Feed timeline
+
+.feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    border-bottom: 1px solid var(--card-border);
+    padding: 1rem 0;
+  }
+}
+
+.feed-item-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+
+  time {
+    margin-left: 0.5rem;
+  }
+}
+
+.feed-item-category {
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.feed-item-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.feed-item-summary {
+  color: var(--fg);
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--fg-muted);
+}
+
+.recently h2 {
+  font-size: 1.2rem;
+}
+
+// Cards with media lead with a thumbnail; title/description sit to its right
+.feed-item.has-thumb {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  .feed-item-body {
+    min-width: 0;
+  }
+}
+
+.feed-item-thumb {
+  flex-shrink: 0;
+
+  img,
+  video {
+    width: 6rem;
+    border-radius: 4px;
+    display: block;
+  }
+}
+
+.feed-item-media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  img,
+  video {
+    max-height: 16rem;
+    max-width: 100%;
+    border-radius: 4px;
+  }
+}
+
+.feed-item-stats {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+// Ratings and interaction glyphs read poorly at meta size — bump them
+.feed-item-rating,
+.feed-item-stats span,
+.webmentions > .feed-item-meta {
+  font-size: 1.05rem;
+}
+
+.stats-as-of {
+  font-size: 0.8rem;
+}
+
+// Mastodon splits long URLs into spans (invisible/ellipsis) for shortening;
+// they're intentionally left visible so the full URL shows. Just make sure
+// long URLs wrap instead of overflowing.
+.feed-item-content a {
+  word-break: break-all;
+}
+
+.link-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--fg);
+  max-width: 32rem;
+
+  > img {
+    width: 7rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--fg);
+  }
+}
+
+.link-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.75rem;
+  min-width: 0;
+}
+
+.link-card-title {
+  font-weight: 600;
+}
+
+.link-card-description {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.link-card-domain {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+
+// Image lightbox on detail pages
+.lightbox-target {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+
+  img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 4px;
+  }
+}
+
+// Webmentions on original items
+
+.webmentions {
+  border-top: 1px solid var(--card-border);
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.avatar-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+}
+
+.avatar-overflow {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+
+.avatar-fallback {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--card-border);
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.webmention-reply {
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+  }
+
+  time {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.review-image {
+  max-height: 24rem;
+  border-radius: 6px;
+}
+
+.footnotes {
+  border-top: 1px solid var(--card-border);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin: 0.25rem 0;
+  }
+}
+
+// Age warning on old posts
+
+.age-warning {
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}

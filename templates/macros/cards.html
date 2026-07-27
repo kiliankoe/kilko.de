@@ -1,0 +1,144 @@
+{# Renders one feed item. The category is derived from the directory the
+   item lives in (content/feed/<category>/…) — no frontmatter field needed. #}
+
+{% macro category_of(page) %}{{ page.relative_path | split(pat="/") | nth(n=1) }}{% endmacro category_of %}
+
+{% macro rating_stars(rating) %}{% set full = rating | round(method="floor") | int %}{% for i in range(end=full) %}★{% endfor %}{% if rating - full >= 0.5 %}½{% endif %}{% endmacro rating_stars %}
+
+{% macro stats_line(stats) %}
+{%- set fav_count = stats.favs | default(value=stats.likes | default(value=0)) -%}
+{%- set boost_count = stats.boosts | default(value=stats.reposts | default(value=0)) -%}
+{%- set reply_count = stats.replies | default(value=0) -%}
+{%- if fav_count > 0 %}<span title="favorites">{{ fav_count }} ★</span>{% endif %}
+{%- if boost_count > 0 %} <span title="boosts">{{ boost_count }} ↻</span>{% endif %}
+{%- if reply_count > 0 %} <span title="replies">{{ reply_count }} ⤷</span>{% endif %}
+{%- endmacro stats_line %}
+
+{% macro media_item(m) %}
+{%- if m.url is ending_with(".mp4") -%}
+<video src="{{ m.url | safe }}" controls muted loop playsinline{% if m.alt %} title="{{ m.alt }}"{% endif %}></video>
+{%- else -%}
+<img src="{{ m.url | safe }}" alt="{{ m.alt | default(value='') }}" loading="lazy" />
+{%- endif -%}
+{% endmacro media_item %}
+
+{% macro link_card(card) %}
+<a class="link-card" href="{{ card.url | safe }}" rel="nofollow noopener">
+  {%- if card.image %}<img src="{{ card.image | safe }}" alt="" loading="lazy" />{% endif %}
+  <span class="link-card-text">
+    <span class="link-card-title">{{ card.title }}</span>
+    {%- if card.description %}<span class="link-card-description">{{ card.description | truncate(length=160) }}</span>{% endif %}
+    <span class="link-card-domain">{{ card.url | split(pat="/") | nth(n=2) }}</span>
+  </span>
+</a>
+{% endmacro link_card %}
+
+{% macro media_grid(media) %}
+<div class="feed-item-media">
+  {%- for m in media %}
+  {{ self::media_item(m=m) }}
+  {%- endfor %}
+</div>
+{% endmacro media_grid %}
+
+{# Likes/reposts/replies rendering (avatar strips + reply cards), used for
+   native network interactions on imported items and for webmentions on
+   original items — both share the same jf2-like shape. Lives in this file
+   because Tera's self:: breaks when a template imports two macro files. #}
+
+{% macro avatar_strip(people, symbol) %}
+{%- if people %}
+<p class="feed-item-meta">{{ people | length }} {{ symbol }}</p>
+<div class="avatar-strip">
+  {%- for person in people | slice(end=12) %}
+  <a href="{{ person.author.url | default(value='#') | safe }}" title="{{ person.author.name }}">
+    {%- if person.author.photo %}<img src="{{ person.author.photo | safe }}" alt="{{ person.author.name }}" loading="lazy" />{% else %}<span class="avatar-fallback">{{ person.author.name | truncate(length=1, end="") }}</span>{% endif %}</a>
+  {%- endfor %}
+  {%- if people | length > 12 %}<span class="avatar-overflow">+{{ people | length - 12 }}</span>{% endif %}
+</div>
+{%- endif %}
+{% endmacro avatar_strip %}
+
+{% macro reply_list(items) %}
+{%- if items %}
+<p class="feed-item-meta">{{ items | length }} ⤷</p>
+{%- for reply in items %}
+<div class="webmention-reply">
+  <a class="webmention-author" href="{{ reply.author.url | default(value='#') | safe }}">
+    {%- if reply.author.photo %}<img src="{{ reply.author.photo | safe }}" alt="" loading="lazy" />{% endif %}
+    {{ reply.author.name }}</a>
+  {%- if reply.published %}<time datetime="{{ reply.published }}">{{ reply.published | date(format="%Y-%m-%d") }}</time>{% endif %}
+  {%- if reply.content_html %}
+  <div class="webmention-content">{{ reply.content_html | safe }}</div>
+  {%- endif %}
+  {%- if reply.url %}<a class="feed-item-meta" href="{{ reply.url | safe }}">source ↗</a>{% endif %}
+</div>
+{%- endfor %}
+{%- endif %}
+{% endmacro reply_list %}
+
+{% macro interaction_block(data) %}
+<div class="webmentions">
+  {{ self::avatar_strip(people=data.likes | default(value=[]), symbol="★") }}
+  {{ self::avatar_strip(people=data.reposts | default(value=[]), symbol="↻") }}
+  {{ self::reply_list(items=data.replies | default(value=[])) }}
+</div>
+{% endmacro interaction_block %}
+
+{% macro card(page, compact=false) %}
+{%- set category = self::category_of(page=page) | trim -%}
+{%- set thumb = page.extra.media | default(value=[]) | first -%}
+<div class="feed-item feed-item-{{ category }}{% if thumb %} has-thumb{% endif %}">
+  {%- if thumb %}
+  <a class="feed-item-thumb" href="{{ page.permalink | safe }}">{{ self::media_item(m=thumb) }}</a>
+  {%- endif %}
+  <div class="feed-item-body">
+  <span class="feed-item-meta">
+    <a class="feed-item-category" href="/feed/{{ category }}">{{ category }}</a>
+    <a class="feed-item-permalink" href="{{ page.permalink | safe }}"><time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time></a>
+    {%- if page.extra.rating %}
+    <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ self::rating_stars(rating=page.extra.rating) }}</span>
+    {%- endif %}
+    {%- if category == "talks" and page.extra.event %}
+    <span class="feed-item-event">at {{ page.extra.event }}</span>
+    {%- endif %}
+  </span>
+  {%- if category == "links" and page.extra.url %}
+  <a class="feed-item-title" href="{{ page.extra.url | safe }}">{{ page.title }} ↗</a>
+  <span class="feed-item-meta"><a href="{{ page.permalink | safe }}">permalink</a></span>
+  {%- elif page.title %}
+  <a class="feed-item-title" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+  {%- endif %}
+  {%- if page.extra.content_html %}
+  <div class="feed-item-content">{{ page.extra.content_html | safe }}</div>
+  {%- elif not compact %}
+  {%- if category == "reviews" or category == "links" %}
+  <div class="feed-item-content">{{ page.content | safe }}</div>
+  {%- elif page.summary %}
+  <div class="feed-item-summary">{{ page.summary | safe }} <a href="{{ page.permalink | safe }}">read more →</a></div>
+  {%- elif page.content %}
+  {# striptags leaves entities (&quot; …) intact, so the result is already
+     escaped HTML text — render with safe to avoid double-escaping #}
+  <div class="feed-item-summary"><p>{{ page.content | striptags | truncate(length=300) | safe }} <a href="{{ page.permalink | safe }}">read more →</a></p></div>
+  {%- endif %}
+  {%- endif %}
+  {%- if page.extra.media and page.extra.media | length > 1 and not compact %}
+  {{ self::media_grid(media=page.extra.media | slice(start=1)) }}
+  {%- endif %}
+  {%- if page.extra.card and not compact %}
+  {{ self::link_card(card=page.extra.card) }}
+  {%- endif %}
+  {%- if page.extra.origin_url %}
+  <span class="feed-item-meta feed-item-stats">
+    {%- if page.extra.stats %}{{ self::stats_line(stats=page.extra.stats) }} {% endif %}
+    <a href="{{ page.extra.origin_url | safe }}">{% if category == "mastodon" %}on mastodon{% elif category == "bluesky" %}on bluesky{% else %}original{% endif %} ↗</a>
+    {%- if page.extra.also_on %}
+    {%- for other in page.extra.also_on %}
+    · {% if other.stats %}{{ self::stats_line(stats=other.stats) }} {% endif %}<a href="{{ other.url | safe }}">on {{ other.network }} ↗</a>
+    {%- endfor %}
+    {%- endif %}
+  </span>
+  {%- endif %}
+  </div>
+</div>
+{% endmacro card %}

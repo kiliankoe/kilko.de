@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% import "macros/cards.html" as cards %}
+
+{% block title %}Feed · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<section>
+  <article class="feed">
+    <h1><a href="/">kilko.de</a>/feed</h1>
+    <ul class="feed-list">
+      {% for page in paginator.pages %}
+      <li>{{ cards::card(page=page) }}</li>
+      {% endfor %}
+    </ul>
+    <nav class="pagination">
+      {% if paginator.previous %}<a href="{{ paginator.previous | safe }}">← newer</a>{% endif %}
+      <span>page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+      {% if paginator.next %}<a href="{{ paginator.next | safe }}">older →</a>{% endif %}
+    </nav>
+  </article>
+</section>
+{% endblock content %}
