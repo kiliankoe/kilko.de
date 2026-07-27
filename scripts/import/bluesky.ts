@@ -6,6 +6,7 @@ import { fetchJson } from "../lib/http.ts";
 import { isCrossPost } from "../lib/dedup.ts";
 import { type FeedItem, loadState, saveState, statsPatch } from "../lib/model.ts";
 import { mirrorMedia } from "../lib/media.ts";
+import { assembleThreads } from "./mastodon.ts";
 
 const API = "https://public.api.bsky.app/xrpc";
 const ACTOR = "kilian.io";
@@ -13,7 +14,10 @@ const ACTOR = "kilian.io";
 interface BskyRecord {
   text: string;
   createdAt: string;
-  reply?: unknown;
+  reply?: {
+    root?: { uri: string };
+    parent?: { uri: string };
+  };
   facets?: {
     index?: { byteStart: number; byteEnd: number };
     features?: { $type: string; uri?: string; did?: string; tag?: string }[];
@@ -144,10 +148,34 @@ export function externalCard(post: BskyPostView) {
   };
 }
 
+function didOf(atUri: string): string {
+  return atUri.split("/")[2] ?? "";
+}
+
+// A post replying within the author's own thread: parent and root both live
+// under the same DID as the post itself.
+export function isSelfThreadReply(post: BskyPostView): boolean {
+  const reply = post.record.reply;
+  if (!reply?.parent?.uri || !reply?.root?.uri) return false;
+  const own = didOf(post.uri);
+  return didOf(reply.parent.uri) === own && didOf(reply.root.uri) === own;
+}
+
 export function mapPost(post: BskyPostView): FeedItem {
   const rkey = post.uri.split("/").pop()!;
   const card = externalCard(post);
+  const selfThread = isSelfThreadReply(post);
   return {
+    extra: {
+      at_uri: post.uri,
+      ...(card ? { card } : {}),
+      ...(selfThread
+        ? {
+          in_reply_to: post.record.reply!.parent!.uri.split("/").pop(),
+          reply_root: post.record.reply!.root!.uri.split("/").pop(),
+        }
+        : {}),
+    },
     id: rkey,
     date: post.record.createdAt,
     url: atUriToWebUrl(post.uri, post.author.handle),
@@ -163,12 +191,13 @@ export function mapPost(post: BskyPostView): FeedItem {
       replies: post.replyCount,
     },
     stats_updated: new Date().toISOString(),
-    extra: { at_uri: post.uri, ...(card ? { card } : {}) },
   };
 }
 
 export function isFeedWorthy(item: BskyFeedItem): boolean {
-  if (item.reason || item.reply || item.post.record.reply) return false;
+  if (item.reason) return false;
+  // replies stay out unless they continue the author's own thread
+  if (item.post.record.reply && !isSelfThreadReply(item.post)) return false;
   // loop guard — also covers link cards and facets whose URL isn't in the text
   if (item.post.record.text.includes("kilko.de")) return false;
   if (recordLinks(item.post.record).some((link) => link.includes("kilko.de"))) {
@@ -181,16 +210,19 @@ export async function importBluesky(): Promise<void> {
   const state = loadState("bluesky");
   const mastodonItems = Object.values(loadState("mastodon").items);
 
+  // posts_and_author_threads includes the author's own thread continuations
   const response = await fetchJson<{ feed: BskyFeedItem[] }>(
-    `${API}/app.bsky.feed.getAuthorFeed?actor=${ACTOR}&filter=posts_no_replies&limit=50`,
+    `${API}/app.bsky.feed.getAuthorFeed?actor=${ACTOR}&filter=posts_and_author_threads&limit=50`,
   );
 
   const fetched = new Set<string>();
+  const isNew = new Set<string>();
   for (const feedItem of response.feed) {
     if (!isFeedWorthy(feedItem)) continue;
     const item = mapPost(feedItem.post);
     fetched.add(item.id);
     const existing = state.items[item.id];
+    if (!existing) isNew.add(item.id);
     Object.assign(item, statsPatch(existing, item.stats!));
     item.merged_into = existing?.merged_into;
     item.interactions = existing?.interactions;
@@ -198,14 +230,6 @@ export async function importBluesky(): Promise<void> {
       ? existing.media
       : item.media;
     item.media = media?.length ? await mirrorMedia("bluesky", item.id, media) : undefined;
-
-    // Cross-post dedup: stable once made, so only decide for new items.
-    if (!existing) {
-      const twin = mastodonItems.find((m) =>
-        !m.deleted && !m.merged_into && isCrossPost(m, item)
-      );
-      if (twin) item.merged_into = `mastodon/${twin.id}`;
-    }
     state.items[item.id] = item;
   }
 
@@ -215,6 +239,27 @@ export async function importBluesky(): Promise<void> {
     for (const item of Object.values(state.items)) {
       if (item.date >= oldest && !fetched.has(item.id)) item.deleted = true;
     }
+  }
+
+  assembleThreads(state.items);
+  // The chain walk needs every intermediate post; if some are missing (older
+  // than our window), the record's explicit root reference still resolves.
+  for (const item of Object.values(state.items)) {
+    const rootId = item.extra?.reply_root as string | undefined;
+    if (!item.thread_root && rootId && rootId !== item.id && state.items[rootId]) {
+      item.thread_root = rootId;
+    }
+  }
+
+  // Cross-post dedup: stable once made, so only decide for new items —
+  // and never for thread segments, they merge via their root.
+  for (const id of isNew) {
+    const item = state.items[id];
+    if (item.thread_root || item.merged_into) continue;
+    const twin = mastodonItems.find((m) =>
+      !m.deleted && !m.merged_into && !m.thread_root && isCrossPost(m, item)
+    );
+    if (twin) item.merged_into = `mastodon/${twin.id}`;
   }
 
   saveState("bluesky", state);

@@ -128,6 +128,10 @@
   {%- if page.extra.card and not compact %}
   {{ self::link_card(card=page.extra.card) }}
   {%- endif %}
+  {%- if page.extra.thread %}
+  {%- set continuations = page.extra.thread | length %}
+  <span class="feed-item-meta"><a href="{{ page.permalink | safe }}">thread · {{ continuations + 1 }} posts</a></span>
+  {%- endif %}
   {%- if page.extra.origin_url %}
   <span class="feed-item-meta feed-item-stats">
     {%- if page.extra.stats %}{{ self::stats_line(stats=page.extra.stats) }} {% endif %}

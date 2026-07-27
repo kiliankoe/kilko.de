@@ -79,6 +79,15 @@
     {# books render their cover next to the blurb above #}
     {% if page.extra.media and category != "books" %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
     {% if page.extra.card %}{{ cards::link_card(card=page.extra.card) }}{% endif %}
+    {% if page.extra.thread %}
+    {%- for segment in page.extra.thread %}
+    <div class="thread-segment">
+      {%- if segment.content_html %}<div class="feed-item-content">{{ segment.content_html | safe }}</div>{% endif %}
+      {%- if segment.media %}{{ cards::media_grid(media=segment.media) }}{% endif %}
+      <p class="feed-item-meta"><a href="{{ segment.url | safe }}"><time datetime="{{ segment.date }}">{{ segment.date | date(format="%B %d, %Y") }}</time> ↗</a></p>
+    </div>
+    {%- endfor %}
+    {% endif %}
     {% if page.extra.origin_url %}
     <p class="feed-item-meta feed-item-stats">
       {%- if page.extra.stats %}{{ cards::stats_line(stats=page.extra.stats) }} {% endif %}

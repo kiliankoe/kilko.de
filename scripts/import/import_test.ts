@@ -14,6 +14,8 @@ const mastodonStatus = {
   visibility: "public",
   content: '<p>Hello <a href="https://example.com">world</a></p>',
   in_reply_to_id: null,
+  in_reply_to_account_id: null,
+  account: { id: "15760" },
   reblog: null,
   favourites_count: 3,
   reblogs_count: 1,
@@ -34,7 +36,23 @@ Deno.test("mastodon mapStatus produces a sanitized feed item", () => {
 Deno.test("mastodon filters replies, boosts, non-public, and loop posts", () => {
   assertEquals(mastodon.isFeedWorthy(mastodonStatus), true);
   assertEquals(mastodon.isFeedWorthy({ ...mastodonStatus, visibility: "unlisted" }), false);
-  assertEquals(mastodon.isFeedWorthy({ ...mastodonStatus, in_reply_to_id: "1" }), false);
+  // replies to others stay out; self-replies (thread continuations) stay in
+  assertEquals(
+    mastodon.isFeedWorthy({
+      ...mastodonStatus,
+      in_reply_to_id: "1",
+      in_reply_to_account_id: "someone-else",
+    }),
+    false,
+  );
+  assertEquals(
+    mastodon.isFeedWorthy({
+      ...mastodonStatus,
+      in_reply_to_id: "1",
+      in_reply_to_account_id: "15760",
+    }),
+    true,
+  );
   assertEquals(mastodon.isFeedWorthy({ ...mastodonStatus, reblog: {} }), false);
   assertEquals(
     mastodon.isFeedWorthy({
@@ -43,6 +61,47 @@ Deno.test("mastodon filters replies, boosts, non-public, and loop posts", () => 
     }),
     false,
   );
+});
+
+const RE_HTML =
+  '<p>RE: <a href="https://chaos.social/@kilian/100" rel="nofollow noopener"><span class="invisible">https://</span><span class="ellipsis">chaos.social/@kilian/1</span><span class="invisible">00</span></a></p><p>More thoughts.</p>';
+
+Deno.test("mastodon RE-quote detection and prefix stripping", () => {
+  assertEquals(mastodon.reQuoteTarget(RE_HTML), "100");
+  assertEquals(mastodon.reQuoteTarget("<p>Regular post</p>"), undefined);
+  assertEquals(mastodon.stripReQuotePrefix(RE_HTML), "<p>More thoughts.</p>");
+});
+
+Deno.test("assembleThreads resolves chains, RE-quotes, and guards cycles", () => {
+  const item = (
+    id: string,
+    date: string,
+    extra?: Record<string, unknown>,
+  ): import("../lib/model.ts").FeedItem => ({
+    id,
+    date,
+    url: `https://chaos.social/@kilian/${id}`,
+    extra,
+  });
+  const items: Record<string, import("../lib/model.ts").FeedItem> = {
+    "100": item("100", "2026-07-01"),
+    "101": item("101", "2026-07-01", { in_reply_to: "100" }),
+    "102": item("102", "2026-07-02", { in_reply_to: "101" }),
+    "103": item("103", "2026-07-03", { re_target: "100" }),
+    "200": item("200", "2026-07-04"),
+    // reply chain pointing at an unknown parent stays standalone
+    "300": item("300", "2026-07-05", { in_reply_to: "999" }),
+    // artificial cycle must not hang
+    "400": item("400", "2026-07-06", { in_reply_to: "401" }),
+    "401": item("401", "2026-07-06", { in_reply_to: "400" }),
+  };
+  mastodon.assembleThreads(items);
+  assertEquals(items["101"].thread_root, "100");
+  assertEquals(items["102"].thread_root, "100");
+  assertEquals(items["103"].thread_root, "100");
+  assertEquals(items["100"].thread_root, undefined);
+  assertEquals(items["200"].thread_root, undefined);
+  assertEquals(items["300"].thread_root, undefined);
 });
 
 const bskyPost = {
@@ -66,13 +125,34 @@ Deno.test("bluesky mapPost converts at-uri, linkifies, and merges quote count", 
   );
 });
 
-Deno.test("bluesky filters reposts and replies", () => {
+Deno.test("bluesky filters reposts and foreign replies, keeps self-threads", () => {
   assertEquals(bluesky.isFeedWorthy({ post: bskyPost }), true);
   assertEquals(bluesky.isFeedWorthy({ post: bskyPost, reason: {} }), false);
-  assertEquals(
-    bluesky.isFeedWorthy({ post: { ...bskyPost, record: { ...bskyPost.record, reply: {} } } }),
-    false,
-  );
+  const foreignReply = {
+    ...bskyPost,
+    record: {
+      ...bskyPost.record,
+      reply: {
+        root: { uri: "at://did:plc:other/app.bsky.feed.post/r" },
+        parent: { uri: "at://did:plc:other/app.bsky.feed.post/r" },
+      },
+    },
+  };
+  assertEquals(bluesky.isFeedWorthy({ post: foreignReply }), false);
+  const selfReply = {
+    ...bskyPost,
+    record: {
+      ...bskyPost.record,
+      reply: {
+        root: { uri: "at://did:plc:abc123/app.bsky.feed.post/3root" },
+        parent: { uri: "at://did:plc:abc123/app.bsky.feed.post/3root" },
+      },
+    },
+  };
+  assertEquals(bluesky.isFeedWorthy({ post: selfReply }), true);
+  const mapped = bluesky.mapPost(selfReply);
+  assertEquals(mapped.extra?.in_reply_to, "3root");
+  assertEquals(mapped.extra?.reply_root, "3root");
 });
 
 Deno.test("bluesky recordToHtml renders full URLs from facets (byte offsets)", () => {

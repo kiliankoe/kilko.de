@@ -34,6 +34,9 @@ export interface FeedItem {
   // Same-source collapse (e.g. a finished-reading absorbed by its rating):
   // no markdown is generated and no also_on entry appears anywhere.
   collapsed_into?: string;
+  // Thread continuation (self-reply or "RE:" quote of an own post): rendered
+  // as a segment of the root item instead of a standalone feed item.
+  thread_root?: string;
   deleted?: boolean; // upstream deletion → no markdown is generated
   extra?: Record<string, unknown>; // source-specific fields (rating, repo, …)
 }

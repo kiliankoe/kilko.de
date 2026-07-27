@@ -344,6 +344,13 @@ h1 {
   }
 }
 
+// Thread continuations on detail pages
+.thread-segment {
+  border-top: 1px dashed var(--card-border);
+  margin-top: 1rem;
+  padding-top: 0.25rem;
+}
+
 // Book/movie detail metadata
 
 .badge {

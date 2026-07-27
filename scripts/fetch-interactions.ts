@@ -23,7 +23,10 @@ function isRecent(date: string): boolean {
   return Date.now() - new Date(date).getTime() < WINDOW_DAYS * 24 * 60 * 60 * 1000;
 }
 
+const OWN_BSKY_HANDLE = "kilian.io";
+
 interface MastodonAccount {
+  id?: string;
   display_name: string;
   acct: string;
   url: string;
@@ -66,10 +69,14 @@ interface BskyThreadNode {
   replies?: BskyThreadNode[];
 }
 
-export function flattenThread(node: BskyThreadNode): Interaction[] {
+export function flattenThread(
+  node: BskyThreadNode,
+  excludeHandle?: string,
+): Interaction[] {
   const replies: Interaction[] = [];
   for (const child of node.replies ?? []) {
-    if (child.post) {
+    // own posts in the tree are thread continuations, not replies
+    if (child.post && child.post.author.handle !== excludeHandle) {
       replies.push({
         ...mapBskyActor(child.post.author),
         url: atUriToWebUrl(child.post.uri, child.post.author.handle),
@@ -77,7 +84,7 @@ export function flattenThread(node: BskyThreadNode): Interaction[] {
         content_html: textToHtml(child.post.record.text),
       });
     }
-    replies.push(...flattenThread(child));
+    replies.push(...flattenThread(child, excludeHandle));
   }
   return replies;
 }
@@ -85,6 +92,7 @@ export function flattenThread(node: BskyThreadNode): Interaction[] {
 async function fetchMastodonInteractions(
   id: string,
   api = MASTODON_API,
+  excludeAccountId?: string,
 ): Promise<Interactions> {
   const [favs, boosts, context] = await Promise.all([
     fetchJson<MastodonAccount[]>(`${api}/statuses/${id}/favourited_by?limit=80`),
@@ -101,12 +109,15 @@ async function fetchMastodonInteractions(
   return {
     likes: favs.map(mapMastodonAccount),
     reposts: boosts.map(mapMastodonAccount),
-    replies: context.descendants.map((reply) => ({
-      ...mapMastodonAccount(reply.account),
-      url: reply.url,
-      published: reply.created_at,
-      content_html: sanitizeHtml(reply.content),
-    })),
+    replies: context.descendants
+      // own posts among the descendants are thread continuations, not replies
+      .filter((reply) => !excludeAccountId || reply.account.id !== excludeAccountId)
+      .map((reply) => ({
+        ...mapMastodonAccount(reply.account),
+        url: reply.url,
+        published: reply.created_at,
+        content_html: sanitizeHtml(reply.content),
+      })),
   };
 }
 
@@ -126,7 +137,7 @@ async function fetchBskyInteractions(atUri: string): Promise<Interactions> {
   return {
     likes: likes.likes.map((like) => mapBskyActor(like.actor)),
     reposts: reposts.repostedBy.map(mapBskyActor),
-    replies: flattenThread(thread.thread),
+    replies: flattenThread(thread.thread, OWN_BSKY_HANDLE),
   };
 }
 
@@ -154,7 +165,11 @@ async function refreshMastodon(): Promise<void> {
         }),
       );
       item.interactions = hasAny(item.stats)
-        ? await fetchMastodonInteractions(item.id)
+        ? await fetchMastodonInteractions(
+          item.id,
+          MASTODON_API,
+          state.meta?.account_id as string | undefined,
+        )
         : undefined;
       count++;
     } catch (error) {

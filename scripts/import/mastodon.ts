@@ -1,4 +1,7 @@
-// Imports original public posts from @kilian@chaos.social.
+// Imports original public posts from @kilian@chaos.social. Self-reply
+// threads and "RE: <own-post-url>" quote posts collapse into one feed item:
+// the thread root hosts, continuations get thread_root set and render as
+// segments (see assembleThreads).
 
 import { fetchJson } from "../lib/http.ts";
 import { sanitizeHtml, stripHtml } from "../lib/sanitize.ts";
@@ -15,6 +18,8 @@ interface MastodonStatus {
   visibility: string;
   content: string;
   in_reply_to_id: string | null;
+  in_reply_to_account_id: string | null;
+  account: { id: string };
   reblog: unknown | null;
   favourites_count: number;
   reblogs_count: number;
@@ -33,12 +38,27 @@ interface MastodonStatus {
   } | null;
 }
 
+// chaos.social-style quote posts start with a paragraph "RE: <link to post>";
+// when the link targets one of our own statuses it's a thread continuation.
+export function reQuoteTarget(contentHtml: string): string | undefined {
+  return contentHtml.match(
+    /^\s*<p>RE:\s*<a href="https?:\/\/[^"]+\/(\d+)"/,
+  )?.[1];
+}
+
+export function stripReQuotePrefix(contentHtml: string): string {
+  return contentHtml.replace(/^\s*<p>RE:\s*<a[^>]*>.*?<\/a>\s*<\/p>\s*/, "");
+}
+
 export function mapStatus(status: MastodonStatus): FeedItem {
   const content_html = sanitizeHtml(status.content);
   const card = status.card;
   const hasCard = card?.type === "link" && card.url && !card.url.includes("kilko.de");
-  return {
-    extra: hasCard
+  const selfReply = status.in_reply_to_id &&
+    status.in_reply_to_account_id === status.account.id;
+  const reTarget = reQuoteTarget(content_html);
+  const extra = {
+    ...(hasCard
       ? {
         card: {
           url: card!.url,
@@ -47,7 +67,12 @@ export function mapStatus(status: MastodonStatus): FeedItem {
           image: card!.image ?? undefined,
         },
       }
-      : undefined,
+      : {}),
+    ...(selfReply ? { in_reply_to: status.in_reply_to_id } : {}),
+    ...(reTarget ? { re_target: reTarget } : {}),
+  };
+  return {
+    extra: Object.keys(extra).length ? extra : undefined,
     id: status.id,
     date: status.created_at,
     url: status.url,
@@ -67,10 +92,45 @@ export function mapStatus(status: MastodonStatus): FeedItem {
 
 export function isFeedWorthy(status: MastodonStatus): boolean {
   if (status.visibility !== "public") return false;
-  if (status.reblog || status.in_reply_to_id) return false;
+  if (status.reblog) return false;
+  // replies to *other* accounts stay out; self-replies are thread segments
+  // (compare account ids, not handles — threader learned that the hard way)
+  if (
+    status.in_reply_to_id &&
+    status.in_reply_to_account_id !== status.account.id
+  ) return false;
   // loop guard: never re-import posts that reference the site itself
   if (status.content.includes("kilko.de")) return false;
   return true;
+}
+
+// Marks thread continuations with the id of their ultimate root. Recomputed
+// wholesale each run; chain walks carry a visited set because reply chains
+// can loop (another threader lesson).
+export function assembleThreads(items: Record<string, FeedItem>): void {
+  for (const item of Object.values(items)) item.thread_root = undefined;
+
+  const parentOf = (item: FeedItem): FeedItem | undefined => {
+    const parentId = (item.extra?.in_reply_to ?? item.extra?.re_target) as
+      | string
+      | undefined;
+    if (!parentId) return undefined;
+    const parent = items[parentId];
+    return parent && !parent.deleted ? parent : undefined;
+  };
+
+  for (const item of Object.values(items)) {
+    if (item.deleted) continue;
+    const visited = new Set([item.id]);
+    let root: FeedItem | undefined;
+    let cursor = parentOf(item);
+    while (cursor && !visited.has(cursor.id)) {
+      visited.add(cursor.id);
+      root = cursor;
+      cursor = parentOf(cursor);
+    }
+    if (root) item.thread_root = root.id;
+  }
 }
 
 export async function importMastodon(): Promise<void> {
@@ -85,6 +145,7 @@ export async function importMastodon(): Promise<void> {
     state.meta = { ...state.meta, account_id: accountId };
   }
 
+  // exclude_replies keeps self-replies — exactly what thread merging needs
   const statuses = await fetchJson<MastodonStatus[]>(
     `${INSTANCE}/api/v1/accounts/${accountId}/statuses?exclude_replies=true&exclude_reblogs=true&limit=40`,
   );
@@ -116,6 +177,7 @@ export async function importMastodon(): Promise<void> {
     }
   }
 
+  assembleThreads(state.items);
   saveState("mastodon", state);
   console.log(`mastodon: ${fetched.size} items in window`);
 }
