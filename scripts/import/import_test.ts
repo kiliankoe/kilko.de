@@ -324,9 +324,12 @@ const letterboxdRss = `<rss><channel>
   <guid isPermaLink="false">letterboxd-watch-123456789</guid>
   <pubDate>Sat, 25 Jul 2026 04:00:00 +1200</pubDate>
   <letterboxd:watchedDate>2026-07-24</letterboxd:watchedDate>
+  <letterboxd:rewatch>Yes</letterboxd:rewatch>
   <letterboxd:filmTitle>Dune: Part Three</letterboxd:filmTitle>
   <letterboxd:filmYear>2026</letterboxd:filmYear>
   <letterboxd:memberRating>4.5</letterboxd:memberRating>
+  <letterboxd:memberLike>Yes</letterboxd:memberLike>
+  <tmdb:movieId>1234567</tmdb:movieId>
   <description><![CDATA[<p><img src="https://a.ltrbxd.com/poster.jpg"/></p><p>Stunning.</p>]]></description>
 </item>
 </channel></rss>`;
@@ -336,10 +339,14 @@ Deno.test("letterboxd maps diary entries with poster and rating", () => {
     "title", "link", "guid", "pubDate", "description",
     "letterboxd:filmTitle", "letterboxd:filmYear",
     "letterboxd:memberRating", "letterboxd:watchedDate",
+    "letterboxd:rewatch", "letterboxd:memberLike", "tmdb:movieId",
   ]);
   const item = letterboxd.mapRssItem(items[0]);
   assertEquals(item?.title, "Dune: Part Three (2026)");
   assertEquals(item?.extra?.rating, 4.5);
+  assertEquals(item?.extra?.rewatch, true);
+  assertEquals(item?.extra?.liked, true);
+  assertEquals(item?.extra?.tmdb_url, "https://www.themoviedb.org/movie/1234567");
   assertEquals(item?.media, [{ url: "https://a.ltrbxd.com/poster.jpg", alt: "Dune: Part Three" }]);
   assertEquals(item?.content_html?.includes("Stunning"), true);
   assertEquals(item?.content_html?.includes("<img"), false);

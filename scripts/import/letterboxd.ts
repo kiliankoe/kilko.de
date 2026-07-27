@@ -17,6 +17,9 @@ export function mapRssItem(item: RssItem): FeedItem | null {
     "letterboxd:filmYear": filmYear,
     "letterboxd:memberRating": memberRating,
     "letterboxd:watchedDate": watchedDate,
+    "letterboxd:rewatch": rewatch,
+    "letterboxd:memberLike": memberLike,
+    "tmdb:movieId": tmdbId,
   } = item;
   if (!link || !guid) return null;
   // list updates etc. — only actual diary entries carry a film title
@@ -40,7 +43,12 @@ export function mapRssItem(item: RssItem): FeedItem | null {
     content_html: text || undefined,
     content_text: stripHtml(text),
     media: poster ? [{ url: poster, alt: filmTitle }] : undefined,
-    extra: memberRating ? { rating: parseFloat(memberRating) } : undefined,
+    extra: {
+      ...(memberRating ? { rating: parseFloat(memberRating) } : {}),
+      ...(rewatch === "Yes" ? { rewatch: true } : {}),
+      ...(memberLike === "Yes" ? { liked: true } : {}),
+      ...(tmdbId ? { tmdb_url: `https://www.themoviedb.org/movie/${tmdbId}` } : {}),
+    },
   };
 }
 
@@ -57,6 +65,9 @@ export async function importLetterboxd(): Promise<void> {
     "letterboxd:filmYear",
     "letterboxd:memberRating",
     "letterboxd:watchedDate",
+    "letterboxd:rewatch",
+    "letterboxd:memberLike",
+    "tmdb:movieId",
   ]);
 
   let count = 0;

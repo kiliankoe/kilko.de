@@ -29,6 +29,36 @@
     <img class="review-image u-photo" src="{{ get_url(path=page.colocated_path ~ page.extra.image) | safe }}" alt="{{ page.title }}" />
     {%- endif %}
     {% endif %}
+    {% if category == "movies" %}
+    <p class="feed-item-meta">
+      {%- if page.extra.rewatch %}<span class="badge">rewatch</span> {% endif %}
+      {%- if page.extra.liked %}<span class="liked" title="liked">♥</span> {% endif %}
+      {%- if page.extra.tmdb_url %}<a href="{{ page.extra.tmdb_url | safe }}">TMDB ↗</a>{% endif %}
+    </p>
+    {% endif %}
+    {% if category == "books" %}
+    {%- if page.extra.subtitle %}<p class="book-subtitle">{{ page.extra.subtitle }}</p>{% endif %}
+    <p class="feed-item-meta">
+      {%- if page.extra.authors %}by {{ page.extra.authors | join(sep=" & ") }}{% elif page.extra.author %}by {{ page.extra.author }}{% endif %}
+      {%- if page.extra.series %} · {{ page.extra.series }}{% if page.extra.series_number %} #{{ page.extra.series_number }}{% endif %}{% endif %}
+      {%- if page.extra.published_date %} · {{ page.extra.published_date | truncate(length=4, end="") }}{% endif %}
+      {%- if page.extra.publishers %} · {{ page.extra.publishers | join(sep=", ") }}{% endif %}
+      {%- if page.extra.languages %} · {{ page.extra.languages | join(sep=", ") }}{% endif %}
+    </p>
+    {%- if page.extra.isbn13 or page.extra.openlibrary_url or page.extra.inventaire_url %}
+    <p class="feed-item-meta">
+      {%- if page.extra.isbn13 %}<span>ISBN {{ page.extra.isbn13 }}</span>{% endif %}
+      {%- if page.extra.openlibrary_url %} · <a href="{{ page.extra.openlibrary_url | safe }}">OpenLibrary ↗</a>{% endif %}
+      {%- if page.extra.inventaire_url %} · <a href="{{ page.extra.inventaire_url | safe }}">Inventaire ↗</a>{% endif %}
+    </p>
+    {%- endif %}
+    {%- if page.extra.media or page.extra.description %}
+    <div class="book-info">
+      {%- if page.extra.media %}{{ cards::media_item(m=page.extra.media | first) }}{% endif %}
+      {%- if page.extra.description %}<div class="book-description">{{ page.extra.description | safe }}</div>{% endif %}
+    </div>
+    {%- endif %}
+    {% endif %}
     {% if category == "links" and page.extra.url %}
     <p><a class="u-bookmark-of" href="{{ page.extra.url | safe }}">{{ page.extra.url }} ↗</a>
     {%- if page.extra.via %} <span class="feed-item-meta">(via <a href="{{ page.extra.via | safe }}">{{ page.extra.via }}</a>)</span>{% endif %}</p>
@@ -46,7 +76,8 @@
     {% else %}
     <div{% if is_original %} class="e-content"{% endif %}>{{ page.content | safe }}</div>
     {% endif %}
-    {% if page.extra.media %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
+    {# books render their cover next to the blurb above #}
+    {% if page.extra.media and category != "books" %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
     {% if page.extra.card %}{{ cards::link_card(card=page.extra.card) }}{% endif %}
     {% if page.extra.origin_url %}
     <p class="feed-item-meta feed-item-stats">

@@ -102,30 +102,100 @@ export function collapseFinishedIntoRatings(items: Record<string, FeedItem>): vo
   }
 }
 
-// The RSS feed carries no cover images, but the book's ActivityPub JSON does.
-// Covers are cached in state.meta so each book is only fetched once.
-type Cover = { url: string; alt?: string } | null;
+// The RSS feed carries almost no metadata, but the book's ActivityPub JSON
+// does: cover, subtitle, blurb, series, publication data, identifiers, and
+// author URLs (resolved to names with one cached fetch each). Everything is
+// cached in state.meta so each book/author is only fetched once.
+interface BookMeta {
+  cover?: { url: string; alt?: string };
+  subtitle?: string;
+  description?: string; // sanitized HTML blurb
+  series?: string;
+  series_number?: string;
+  published_date?: string;
+  publishers?: string[];
+  languages?: string[];
+  isbn13?: string;
+  openlibrary_url?: string;
+  inventaire_url?: string;
+  authors?: string[];
+}
 
-async function fetchCover(
+interface BookwyrmBook {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  series?: string;
+  seriesNumber?: string;
+  publishedDate?: string;
+  firstPublishedDate?: string;
+  publishers?: string[];
+  languages?: string[];
+  isbn13?: string;
+  openlibraryKey?: string;
+  inventaireId?: string;
+  authors?: string[];
+  cover?: { url: string; name?: string };
+}
+
+async function fetchAuthorName(
+  cache: Record<string, string | null>,
+  url: string,
+): Promise<string | null> {
+  if (url in cache) return cache[url];
+  try {
+    const author = await fetchJson<{ name?: string }>(url, {
+      Accept: "application/json",
+    });
+    cache[url] = author.name ?? null;
+  } catch (error) {
+    console.error(`bookwyrm author ${url}: ${error}`);
+    return null; // not cached — retried next run
+  }
+  return cache[url];
+}
+
+async function fetchBookMeta(
   state: ReturnType<typeof loadState>,
   bookId: string,
-): Promise<Cover> {
+): Promise<BookMeta | null> {
   state.meta ??= {};
-  const cache = (state.meta.covers ??= {}) as Record<string, Cover>;
-  if (bookId in cache) return cache[bookId];
+  const books = (state.meta.books ??= {}) as Record<string, BookMeta | null>;
+  const authors = (state.meta.authors ??= {}) as Record<string, string | null>;
+  if (bookId in books) return books[bookId];
   try {
-    const book = await fetchJson<{ cover?: { url: string; name?: string } }>(
+    const book = await fetchJson<BookwyrmBook>(
       `https://bookwyrm.social/book/${bookId}`,
       { Accept: "application/json" },
     );
-    cache[bookId] = book.cover
-      ? { url: book.cover.url, alt: book.cover.name }
-      : null;
+    const names: string[] = [];
+    for (const authorUrl of book.authors ?? []) {
+      const name = await fetchAuthorName(authors, authorUrl);
+      if (name) names.push(name);
+    }
+    books[bookId] = {
+      cover: book.cover ? { url: book.cover.url, alt: book.cover.name } : undefined,
+      subtitle: book.subtitle || undefined,
+      description: book.description ? sanitizeHtml(book.description) : undefined,
+      series: book.series || undefined,
+      series_number: book.seriesNumber || undefined,
+      published_date: book.publishedDate || book.firstPublishedDate || undefined,
+      publishers: book.publishers?.length ? book.publishers : undefined,
+      languages: book.languages?.length ? book.languages : undefined,
+      isbn13: book.isbn13 || undefined,
+      openlibrary_url: book.openlibraryKey
+        ? `https://openlibrary.org/books/${book.openlibraryKey}`
+        : undefined,
+      inventaire_url: book.inventaireId
+        ? `https://inventaire.io/entity/${book.inventaireId}`
+        : undefined,
+      authors: names.length ? names : undefined,
+    };
   } catch (error) {
-    console.error(`bookwyrm cover ${bookId}: ${error}`);
+    console.error(`bookwyrm book ${bookId}: ${error}`);
     return null; // not cached — retried next run
   }
-  return cache[bookId];
+  return books[bookId];
 }
 
 export async function importBookwyrm(): Promise<void> {
@@ -143,9 +213,12 @@ export async function importBookwyrm(): Promise<void> {
 
   for (const item of Object.values(state.items)) {
     const bookId = item.extra?.book_id as string | undefined;
-    if (!bookId || item.media?.length) continue;
-    const cover = await fetchCover(state, bookId);
-    if (cover) item.media = [cover];
+    if (!bookId) continue;
+    const meta = await fetchBookMeta(state, bookId);
+    if (!meta) continue;
+    if (meta.cover && !item.media?.length) item.media = [meta.cover];
+    const { cover: _cover, ...fields } = meta;
+    item.extra = { ...item.extra, ...fields };
   }
 
   collapseFinishedIntoRatings(state.items);
