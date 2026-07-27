@@ -1,0 +1,495 @@
+{
+  "items": {
+    "3mreplv6kas2p": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3mreplv6kas2p",
+        "card": {
+          "url": "https://apps.repebble.com/c5a2a3ecd8ac487ab39411d8",
+          "title": "DVB - Pebble Appstore",
+          "description": "Navigate Dresden's public transport network from your wrist. This app shows you upcoming departures for stops around you. You can also view and follow a specifi",
+          "image": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:tjgxg24z6cmcoyqj6r552va2/bafkreihejs3gs5dvptfheredb5lv6bnjo2tznjtjxxhthh3oguveyxjvsu"
+        }
+      },
+      "id": "3mreplv6kas2p",
+      "date": "2026-07-24T06:21:56.728Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3mreplv6kas2p",
+      "content_html": "<p>In sehnlichster Erwartung auf meine neue <a href=\"https://bsky.app/hashtag/Pebble\" rel=\"nofollow noopener\">#Pebble</a> hab’ ich mich schon mal an einer App dafür probiert. Natürlich für ÖPNV Daten von <a href=\"https://bsky.app/hashtag/VVO\" rel=\"nofollow noopener\">#VVO</a> / <a href=\"https://bsky.app/hashtag/DVB\" rel=\"nofollow noopener\">#DVB</a>, was auch sonst 😁 <a href=\"https://apps.repebble.com/c5a2a3ecd8ac487ab39411d8\" rel=\"nofollow noopener\">https://apps.repebble.com/c5a2a3ecd8ac487ab39411d8</a> <a href=\"https://bsky.app/hashtag/pebbleround2\" rel=\"nofollow noopener\">#pebbleround2</a> <a href=\"https://bsky.app/hashtag/pebbletime2\" rel=\"nofollow noopener\">#pebbletime2</a></p>",
+      "content_text": "In sehnlichster Erwartung auf meine neue #Pebble hab’ ich mich schon mal an einer App dafür probiert. Natürlich für ÖPNV Daten von #VVO / #DVB, was auch sonst 😁 apps.repebble.com/c5a2a3ecd8ac... #pebbleround2 #pebbletime2",
+      "stats": {
+        "likes": 1,
+        "reposts": 1,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/116973504372877003",
+      "interactions": {
+        "likes": [
+          {
+            "author": {
+              "name": "hoodie",
+              "photo": "https://cdn.bsky.app/img/avatar/plain/did:plc:mjffetslualnu7qjcqsptvx6/bafkreih4amhucevipelkphb4w4jncjxtpyspvrzuc7qlpv4pkrrqkinduq",
+              "url": "https://bsky.app/profile/hoodie.de"
+            }
+          }
+        ],
+        "reposts": [
+          {
+            "author": {
+              "name": "hoodie",
+              "photo": "https://cdn.bsky.app/img/avatar/plain/did:plc:mjffetslualnu7qjcqsptvx6/bafkreih4amhucevipelkphb4w4jncjxtpyspvrzuc7qlpv4pkrrqkinduq",
+              "url": "https://bsky.app/profile/hoodie.de"
+            }
+          }
+        ],
+        "replies": []
+      }
+    },
+    "3mpngypccu227": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3mpngypccu227"
+      },
+      "id": "3mpngypccu227",
+      "date": "2026-07-02T06:51:37.481Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3mpngypccu227",
+      "content_html": "<p>Why did we go with <a href=\"https://AGENTS.md\" rel=\"nofollow noopener\">https://AGENTS.md</a> and not robots.txt?</p>",
+      "content_text": "Why did we go with AGENTS.md and not robots.txt?",
+      "stats": {
+        "likes": 2,
+        "reposts": 0,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "interactions": {
+        "likes": [
+          {
+            "author": {
+              "name": "Rulestack",
+              "photo": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hdan5ln3lqedekb52b22hcu/bafkreiefvdcuknrfpk6v62a4mmizdeimut4fwyhigjvkfkmgb3ar7hstvi",
+              "url": "https://bsky.app/profile/ai-shop.bsky.social"
+            }
+          },
+          {
+            "author": {
+              "name": "hoodie",
+              "photo": "https://cdn.bsky.app/img/avatar/plain/did:plc:mjffetslualnu7qjcqsptvx6/bafkreih4amhucevipelkphb4w4jncjxtpyspvrzuc7qlpv4pkrrqkinduq",
+              "url": "https://bsky.app/profile/hoodie.de"
+            }
+          }
+        ],
+        "reposts": [],
+        "replies": [
+          {
+            "author": {
+              "name": "Rulestack",
+              "photo": "https://cdn.bsky.app/img/avatar/plain/did:plc:4hdan5ln3lqedekb52b22hcu/bafkreiefvdcuknrfpk6v62a4mmizdeimut4fwyhigjvkfkmgb3ar7hstvi",
+              "url": "https://bsky.app/profile/ai-shop.bsky.social"
+            },
+            "url": "https://bsky.app/profile/ai-shop.bsky.social/post/3mpt4kprx7j2u",
+            "published": "2026-07-04T13:00:47.101Z",
+            "content_html": "<p>Mostly different jobs, I think: robots.txt is domain-level exclusion for crawlers you didn't invite, AGENTS.md is repo-level instructions for agents you did invite. The web-side analogue ended up being llms.txt. Common thread: a well-known filename ships faster than a standards process.</p>"
+          }
+        ]
+      }
+    },
+    "3mexuzacm5s2m": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3mexuzacm5s2m"
+      },
+      "id": "3mexuzacm5s2m",
+      "date": "2026-02-16T10:51:57.179Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3mexuzacm5s2m",
+      "content_html": "<p>Does anyone have a link to a bsky 🧵 with a few posts, e.g. a post where the author has replied a few times?</p>",
+      "content_text": "Does anyone have a link to a bsky 🧵 with a few posts, e.g. a post where the author has replied a few times?",
+      "stats": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3mat5grgpws2k": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3mat5grgpws2k"
+      },
+      "id": "3mat5grgpws2k",
+      "date": "2025-12-25T15:58:36.080Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3mat5grgpws2k",
+      "content_html": "<p>Sitze im <a href=\"https://bsky.app/hashtag/ICE786\" rel=\"nofollow noopener\">#ICE786</a> zum <a href=\"https://bsky.app/hashtag/39c3\" rel=\"nofollow noopener\">#39c3</a>, hacke noch die letzten (haha) Bugs aus der Gameshow für Tag 2 und höre dabei Machine Lullaby 1 von Fear of Ghosts in Endlosschleife. Bin hyped!</p>",
+      "content_text": "Sitze im #ICE786 zum #39c3, hacke noch die letzten (haha) Bugs aus der Gameshow für Tag 2 und höre dabei Machine Lullaby 1 von Fear of Ghosts in Endlosschleife. Bin hyped!",
+      "stats": {
+        "likes": 1,
+        "reposts": 1,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/115781012344168573"
+    },
+    "3maauazpagc2s": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3maauazpagc2s",
+        "card": {
+          "url": "https://benbyfax.substack.com/p/typewriter",
+          "title": "Converting a typewriter into a Claude terminal",
+          "description": "An analog AI interface",
+          "image": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:tjgxg24z6cmcoyqj6r552va2/bafkreifmmco6jtnwowixsjonfi5foeqg3ltxxejaix3f7j53wbdghyv4ba"
+        }
+      },
+      "id": "3maauazpagc2s",
+      "date": "2025-12-18T09:26:24.453Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3maauazpagc2s",
+      "content_html": "<p>Ok two questions:<br>- Are there <a href=\"https://bsky.app/hashtag/eInk\" rel=\"nofollow noopener\">#eInk</a> tablets with cases that make them look like leather-bound notebooks?<br>- Who wants to help me write an app for these so that I can exchange handwritten messages with AI-powered Tom Riddle?<br><br><a href=\"https://benbyfax.substack.com/p/typewriter\" rel=\"nofollow noopener\">https://benbyfax.substack.com/p/typewriter</a></p>",
+      "content_text": "Ok two questions:\n- Are there #eInk tablets with cases that make them look like leather-bound notebooks?\n- Who wants to help me write an app for these so that I can exchange handwritten messages with AI-powered Tom Riddle?\n\nbenbyfax.substack.com/p/typewriter",
+      "stats": {
+        "likes": 2,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/115739853473188711"
+    },
+    "3lxk4olc3mk2k": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lxk4olc3mk2k",
+        "card": {
+          "url": "https://github.com/nix-community/nh/pull/395",
+          "title": "darwin: show homebrew diff if available by kiliankoe · Pull Request #395 · nix-community/nh",
+          "description": "Hi!\nI&#39;m still fairly new to the nix ecosystem and nh as well. I&#39;ve been using it for a short while now and have come to love its usability and diff outputs after building my config. I also ...",
+          "image": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:tjgxg24z6cmcoyqj6r552va2/bafkreihfjbwssrwzhxwfaekywjtuyyuzmpvmiuqdz5nvxu3vv3rhkrhbzm"
+        }
+      },
+      "id": "3lxk4olc3mk2k",
+      "date": "2025-08-29T13:04:22.035Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lxk4olc3mk2k",
+      "content_html": "<p>Anyone here using <a href=\"https://bsky.app/hashtag/nix\" rel=\"nofollow noopener\">#nix</a> on <a href=\"https://bsky.app/hashtag/macOS\" rel=\"nofollow noopener\">#macOS</a> ( <a href=\"https://bsky.app/hashtag/nixdarwin\" rel=\"nofollow noopener\">#nixdarwin</a>), <a href=\"https://bsky.app/hashtag/nh\" rel=\"nofollow noopener\">#nh</a> *and* has <a href=\"https://bsky.app/hashtag/homebrew\" rel=\"nofollow noopener\">#homebrew</a> configured through it? I'd love for you to try this out and tell me if it works correctly, I only have my setup to test it with 🙃 <a href=\"https://github.com/nix-community/nh/pull/395\" rel=\"nofollow noopener\">https://github.com/nix-community/nh/pull/395</a></p>",
+      "content_text": "Anyone here using #nix on #macOS ( #nixdarwin), #nh *and* has #homebrew configured through it? I'd love for you to try this out and tell me if it works correctly, I only have my setup to test it with 🙃 github.com/nix-communit...",
+      "stats": {
+        "likes": 2,
+        "reposts": 2,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/115112182613837411"
+    },
+    "3lqmosu4hv22r": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lqmosu4hv22r"
+      },
+      "id": "3lqmosu4hv22r",
+      "date": "2025-06-02T11:37:50.939Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lqmosu4hv22r",
+      "content_html": "<p>\"Several people are typing\" is my favorite UI text of all time. Nothing gets me as excited as those four words.</p>",
+      "content_text": "\"Several people are typing\" is my favorite UI text of all time. Nothing gets me as excited as those four words.",
+      "stats": {
+        "likes": 2,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/114613558353562032"
+    },
+    "3lqm6nu6nkk2p": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lqm6nu6nkk2p"
+      },
+      "id": "3lqm6nu6nkk2p",
+      "date": "2025-06-02T06:48:43.317Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lqm6nu6nkk2p",
+      "content_html": "<p>In German, we don't say \"Keine Info\" or even \"Keine Auskunft\", we say \"Keine Beauskunftung möglich!\" and I think that's beautiful.</p>",
+      "content_text": "In German, we don't say \"Keine Info\" or even \"Keine Auskunft\", we say \"Keine Beauskunftung möglich!\" and I think that's beautiful.",
+      "media": [
+        {
+          "url": "/media/bluesky/3lqm6nu6nkk2p-0.jpg",
+          "alt": "A picture of a DVB public transport stop sign with the display reading \"Keine Beauskunftung möglich!\""
+        }
+      ],
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/114612427790694465"
+    },
+    "3ll7l63ws6s2t": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3ll7l63ws6s2t"
+      },
+      "id": "3ll7l63ws6s2t",
+      "date": "2025-03-25T15:21:59.776807Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3ll7l63ws6s2t",
+      "content_html": "<p>TIL <a href=\"https://bsky.app/hashtag/tmux\" rel=\"nofollow noopener\">#tmux</a> has a context menu when right-clicking a window 🤯</p>",
+      "content_text": "TIL #tmux has a context menu when right-clicking a window 🤯",
+      "media": [
+        {
+          "url": "/media/bluesky/3ll7l63ws6s2t-0.jpg",
+          "alt": "Screenshot of tmux' context menu including actions like swap, kill, and rename."
+        }
+      ],
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z",
+      "merged_into": "mastodon/114223750422283532"
+    },
+    "3lgdlseyj4c2u": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lgdlseyj4c2u"
+      },
+      "id": "3lgdlseyj4c2u",
+      "date": "2025-01-22T14:37:59.933Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lgdlseyj4c2u",
+      "content_html": "<p>Forget the overall design or charging port placement, the magic mouse' biggest design flaw is this! Why do these heights have to align so perfectly?!</p>",
+      "content_text": "Forget the overall design or charging port placement, the magic mouse' biggest design flaw is this! Why do these heights have to align so perfectly?!",
+      "stats": {
+        "likes": 2,
+        "reposts": 0,
+        "replies": 2
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lfnw25bzsk2d": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lfnw25bzsk2d"
+      },
+      "id": "3lfnw25bzsk2d",
+      "date": "2025-01-13T23:42:43.466Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lfnw25bzsk2d",
+      "content_html": "<p>I bought a receipt printer the other day, because... why not. There's a <a href=\"https://bsky.app/hashtag/raspberrypi\" rel=\"nofollow noopener\">#raspberrypi</a> attached and as a first proof of concept I can now print sudokus whenever I feel like it 😁</p>",
+      "content_text": "I bought a receipt printer the other day, because... why not. There's a #raspberrypi attached and as a first proof of concept I can now print sudokus whenever I feel like it 😁",
+      "stats": {
+        "likes": 3,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lelxalyvou2k": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lelxalyvou2k"
+      },
+      "id": "3lelxalyvou2k",
+      "date": "2024-12-31T11:33:42.318583Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lelxalyvou2k",
+      "content_html": "<p>My disappointment is imeasurable and my day is ruined. <a href=\"https://bsky.app/hashtag/38c3\" rel=\"nofollow noopener\">#38c3</a> @eventphone </p>",
+      "content_text": "My disappointment is imeasurable and my day is ruined. #38c3 @eventphone ",
+      "media": [
+        {
+          "url": "/media/bluesky/3lelxalyvou2k-0.jpg"
+        }
+      ],
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lekgcda7ec2b": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lekgcda7ec2b"
+      },
+      "id": "3lekgcda7ec2b",
+      "date": "2024-12-30T20:57:47.421Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lekgcda7ec2b",
+      "content_html": "<p>Euch allen einen frohen Tag -362! <a href=\"https://bsky.app/hashtag/38c3\" rel=\"nofollow noopener\">#38c3</a> <a href=\"https://bsky.app/hashtag/39c3\" rel=\"nofollow noopener\">#39c3</a></p>",
+      "content_text": "Euch allen einen frohen Tag -362! #38c3 #39c3",
+      "stats": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lehekpkks22o": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lehekpkks22o",
+        "card": {
+          "url": "https://sanktionsfrei.de/support",
+          "title": "Sanktionsfrei e.V.",
+          "description": "Hartzbreaker stellen sich zwischen Bürgergeld-Leistungsberechtigte und Jobcenter. Zusammen sorgen wir dafür, dass Bürgergeld eine echte Grundversorgung bleibt."
+        }
+      },
+      "id": "3lehekpkks22o",
+      "date": "2024-12-29T15:48:42.081Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lehekpkks22o",
+      "content_html": "<p>Fantastischer Talk! Wir brauchen mehr <br><a href=\"https://bsky.app/hashtag/Umverteilung\" rel=\"nofollow noopener\">#Umverteilung</a>, jetzt! Und bis dahin am besten direkt Hartzbreaker werden ❤️ <a href=\"https://sanktionsfrei.de/support\" rel=\"nofollow noopener\">https://sanktionsfrei.de/support</a> <br><br>Aufzeichung hier: <a href=\"https://media.ccc.de/v/38c3-eat-the-rich-die-menschen-wollen-soziale-sicherheit-aber-kriegen-deutschland-den-deutschen-holt-das-geld-bei-den-reichen\" rel=\"nofollow noopener\">https://media.ccc.de/v/38c3-eat-the-rich-die-menschen-wollen-soziale-sicherheit-aber-kriegen-deutschland-den-deutschen-holt-das-geld-bei-den-reichen</a> <br><br><a href=\"https://bsky.app/hashtag/38c3\" rel=\"nofollow noopener\">#38c3</a></p>",
+      "content_text": "Fantastischer Talk! Wir brauchen mehr \n#Umverteilung, jetzt! Und bis dahin am besten direkt Hartzbreaker werden ❤️ sanktionsfrei.de/support \n\nAufzeichung hier: media.ccc.de/v/38c3-eat-t... \n\n#38c3",
+      "stats": {
+        "likes": 26,
+        "reposts": 12,
+        "replies": 2
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3le77rwqsyk2m": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3le77rwqsyk2m"
+      },
+      "id": "3le77rwqsyk2m",
+      "date": "2024-12-26T10:01:57.890Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3le77rwqsyk2m",
+      "content_html": "<p>Endlich auf dem Weg zum <a href=\"https://bsky.app/hashtag/38c3\" rel=\"nofollow noopener\">#38c3</a> 🙌 Hab mich auf wenig dieses Jahr so sehr gefreut wie dieses \"Familientreffen\".</p>",
+      "content_text": "Endlich auf dem Weg zum #38c3 🙌 Hab mich auf wenig dieses Jahr so sehr gefreut wie dieses \"Familientreffen\".",
+      "stats": {
+        "likes": 2,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3ld74olvq4224": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3ld74olvq4224"
+      },
+      "id": "3ld74olvq4224",
+      "date": "2024-12-13T15:41:12.999Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3ld74olvq4224",
+      "content_html": "<p>All Camels Are Beautiful</p>",
+      "content_text": "All Camels Are Beautiful",
+      "media": [
+        {
+          "url": "/media/bluesky/3ld74olvq4224-0.jpg",
+          "alt": "Graffiti on a wall in Féz, Morocco showing a few camels and the text ACAB."
+        }
+      ],
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lbjzsbde7s2t": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbjzsbde7s2t"
+      },
+      "id": "3lbjzsbde7s2t",
+      "date": "2024-11-22T12:58:28.771Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbjzsbde7s2t",
+      "content_html": "<p>Chicago is fully committing to the postapocalyptic lifestyle I see. <a href=\"https://bsky.app/profile/alisonmalort.bsky.social/post/3lbhcf4dq4k25\" rel=\"nofollow noopener\">https://bsky.app/profile/alisonmalort.bsky.social/post/3lbhcf4dq4k25</a></p>",
+      "content_text": "Chicago is fully committing to the postapocalyptic lifestyle I see. bsky.app/profile/alis...",
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lbjj6tt3ls2k": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbjj6tt3ls2k"
+      },
+      "id": "3lbjj6tt3ls2k",
+      "date": "2024-11-22T08:01:17.202Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbjj6tt3ls2k",
+      "content_html": "<p>Stats 🙌 Love me some stats.</p>",
+      "content_text": "Stats 🙌 Love me some stats.",
+      "media": [
+        {
+          "url": "/media/bluesky/3lbjj6tt3ls2k-0.jpg",
+          "alt": "Screenshot of my listening stats in Overcast for 2024. 131 hours ATP, 60 hours Lage der Nation, 48 hours Reboot Politics and others. 401 hours in total."
+        }
+      ],
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lbhi6ol55c2a": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbhi6ol55c2a"
+      },
+      "id": "3lbhi6ol55c2a",
+      "date": "2024-11-21T12:37:58.479Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbhi6ol55c2a",
+      "content_html": "<p>Oh wow <a href=\"https://bsky.app/profile/did:plc:ofq7cnwrakcaj4w4wjti5gp2\" rel=\"nofollow noopener\">@dumbphoneapp.bsky.social</a> is a wonderfully fresh iOS experience.</p>",
+      "content_text": "Oh wow @dumbphoneapp.bsky.social is a wonderfully fresh iOS experience.",
+      "media": [
+        {
+          "url": "/media/bluesky/3lbhi6ol55c2a-0.jpg",
+          "alt": "homescreen screenshot with dumb phone listing arc, mail, things, overcast, and settings"
+        }
+      ],
+      "stats": {
+        "likes": 2,
+        "reposts": 1,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lbh2nkd7lk2c": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbh2nkd7lk2c"
+      },
+      "id": "3lbh2nkd7lk2c",
+      "date": "2024-11-21T08:35:44.957Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbh2nkd7lk2c",
+      "content_html": "<p>Hi everyone 👋 I'm Kilian, a software engineer in Dresden, Germany.<br>I work on apps that control robots and tinker with <a href=\"https://bsky.app/hashtag/SwiftLang\" rel=\"nofollow noopener\">#SwiftLang</a>, <a href=\"https://bsky.app/hashtag/SwiftUI\" rel=\"nofollow noopener\">#SwiftUI</a>, <a href=\"https://bsky.app/hashtag/TypeScript\" rel=\"nofollow noopener\">#TypeScript</a>, <a href=\"https://bsky.app/hashtag/React\" rel=\"nofollow noopener\">#React</a>, and <a href=\"https://bsky.app/hashtag/Next.js\" rel=\"nofollow noopener\">#Next.js</a> for both work and fun. In my free time, I have fun with <a href=\"https://bsky.app/hashtag/3Dprinting\" rel=\"nofollow noopener\">#3Dprinting</a> and enjoy getting into left-wing politics.</p>",
+      "content_text": "Hi everyone 👋 I'm Kilian, a software engineer in Dresden, Germany.\nI work on apps that control robots and tinker with #SwiftLang, #SwiftUI, #TypeScript, #React, and #Next.js for both work and fun. In my free time, I have fun with #3Dprinting and enjoy getting into left-wing politics.",
+      "stats": {
+        "likes": 5,
+        "reposts": 0,
+        "replies": 2
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lb7ycar6ls2v": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lb7ycar6ls2v"
+      },
+      "id": "3lb7ycar6ls2v",
+      "date": "2024-11-18T13:05:00.180Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lb7ycar6ls2v",
+      "content_html": "<p>👋</p>",
+      "content_text": "👋",
+      "stats": {
+        "likes": 1,
+        "reposts": 0,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T13:09:30.359Z"
+    },
+    "3lbhidezcu22c": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbhidezcu22c",
+        "in_reply_to": "3lbhiccsojs2c",
+        "reply_root": "3lbhi6ol55c2a"
+      },
+      "id": "3lbhidezcu22c",
+      "date": "2024-11-21T12:40:36.233Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbhidezcu22c",
+      "content_html": "<p>Only thing I don't like (more about iOS) is that apparently I can't set up auto-switching wallpapers for light/dark mode without automating that through Shortcuts. Meh.</p>",
+      "content_text": "Only thing I don't like (more about iOS) is that apparently I can't set up auto-switching wallpapers for light/dark mode without automating that through Shortcuts. Meh.",
+      "stats": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T19:03:31.845Z",
+      "thread_root": "3lbhi6ol55c2a"
+    },
+    "3lbhiccsojs2c": {
+      "extra": {
+        "at_uri": "at://did:plc:tjgxg24z6cmcoyqj6r552va2/app.bsky.feed.post/3lbhiccsojs2c",
+        "in_reply_to": "3lbhi6ol55c2a",
+        "reply_root": "3lbhi6ol55c2a"
+      },
+      "id": "3lbhiccsojs2c",
+      "date": "2024-11-21T12:40:00.363Z",
+      "url": "https://bsky.app/profile/kilian.io/post/3lbhiccsojs2c",
+      "content_html": "<p>Thought it was just a cool demo app at first, but it actually integrates (thanks to mainly being a widget). That's fun!</p>",
+      "content_text": "Thought it was just a cool demo app at first, but it actually integrates (thanks to mainly being a widget). That's fun!",
+      "stats": {
+        "likes": 0,
+        "reposts": 0,
+        "replies": 1
+      },
+      "stats_updated": "2026-07-27T19:03:31.845Z",
+      "thread_root": "3lbhi6ol55c2a"
+    }
+  }
+}
