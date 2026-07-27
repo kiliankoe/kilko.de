@@ -31,7 +31,7 @@ if (import.meta.main) {
     const raw = Deno.readTextFileSync(new URL(entry.name, POSTS));
     const slug = raw.match(/^slug = "(.+)"$/m)?.[1];
     if (!slug) throw new Error(`no slug in ${entry.name}`);
-    const target = `https://kilko.de/feed/posts/${slug}/`;
+    const target = `https://kilko.de/blog/${slug}/`;
     const dir = new URL(`${slug}/`, BLOG_DOCS);
     Deno.mkdirSync(dir, { recursive: true });
     Deno.writeTextFileSync(new URL("index.html", dir), stub(target));

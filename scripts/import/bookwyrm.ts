@@ -66,7 +66,7 @@ export function mapRssItem(item: RssItem): FeedItem | null {
       id,
       date,
       url: link,
-      title: `Finished reading ${book}${author ? ` by ${author}` : ""}`,
+      title: `${book}${author ? ` by ${author}` : ""}`,
       extra: {
         ...(bookId ? { book_id: bookId } : {}),
         book,
@@ -97,7 +97,7 @@ export function collapseFinishedIntoRatings(items: Record<string, FeedItem>): vo
     twin.collapsed_into = rating.id;
     // one item carries everything: the finished fact, rating, and review
     const author = twin.extra?.author as string | undefined;
-    rating.title = `Finished reading ${rating.extra?.book}${author ? ` by ${author}` : ""}`;
+    rating.title = `${rating.extra?.book}${author ? ` by ${author}` : ""}`;
     if (author) rating.extra = { ...rating.extra, author };
   }
 }
@@ -219,6 +219,11 @@ export async function importBookwyrm(): Promise<void> {
     if (meta.cover && !item.media?.length) item.media = [meta.cover];
     const { cover: _cover, ...fields } = meta;
     item.extra = { ...item.extra, ...fields };
+    // canonical author names beat the (often absent) RSS title suffix
+    if (meta.authors?.length && item.extra.book && !item.title?.includes(" by ")) {
+      item.title = `${item.extra.book} by ${meta.authors.join(" & ")}`;
+      item.extra.author ??= meta.authors[0];
+    }
   }
 
   collapseFinishedIntoRatings(state.items);

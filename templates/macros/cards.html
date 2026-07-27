@@ -3,6 +3,9 @@
 
 {% macro category_of(page) %}{{ page.relative_path | split(pat="/") | nth(n=1) }}{% endmacro category_of %}
 
+{# posts have their canonical listing at /blog, everything else under /feed #}
+{% macro category_url(category) %}{% if category == "posts" %}/blog{% else %}/feed/{{ category }}{% endif %}{% endmacro category_url %}
+
 {% macro rating_stars(rating) %}{% set full = rating | round(method="floor") | int %}{% for i in range(end=full) %}★{% endfor %}{% if rating - full >= 0.5 %}½{% endif %}{% endmacro rating_stars %}
 
 {% macro stats_line(stats) %}
@@ -94,7 +97,7 @@
   {%- endif %}
   <div class="feed-item-body">
   <span class="feed-item-meta">
-    <a class="feed-item-category" href="/feed/{{ category }}">{{ category }}</a>
+    <a class="feed-item-category" href="{{ self::category_url(category=category) | trim }}">{{ category }}</a>
     <a class="feed-item-permalink" href="{{ page.permalink | safe }}"><time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time></a>
     {%- if page.extra.rating %}
     <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ self::rating_stars(rating=page.extra.rating) }}</span>

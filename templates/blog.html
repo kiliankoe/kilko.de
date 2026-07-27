@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% import "macros/cards.html" as cards %}
+
+{% block title %}Blog · {{ config.title }}{% endblock title %}
+
+{% block head %}
+<link rel="alternate" type="application/atom+xml" title="Blog posts" href="{{ get_url(path='feed/posts/atom.xml') | safe }}" />
+{% endblock head %}
+
+{% block content %}
+<section>
+  <article class="feed">
+    <h1><a href="/">kilko.de</a>/blog</h1>
+    <ul class="feed-list">
+      {% set posts = get_section(path="feed/posts/_index.md") %}
+      {% for post in posts.pages %}
+      <li>{{ cards::card(page=post) }}</li>
+      {% endfor %}
+    </ul>
+  </article>
+</section>
+{% endblock content %}

@@ -4,10 +4,11 @@
 //   deno task new link "Interesting Article"
 //   deno task new talk "My Talk"
 
-const TEMPLATES: Record<string, (title: string) => string> = {
-  post: (title) => `+++
+const TEMPLATES: Record<string, (title: string, slug: string) => string> = {
+  post: (title, slug) => `+++
 title = "${title}"
 date = ${today()}
+path = "blog/${slug}"
 [taxonomies]
 tags = []
 [extra]
@@ -76,7 +77,8 @@ if (import.meta.main) {
     console.error(`usage: deno task new <${Object.keys(TEMPLATES).join("|")}> "Title"`);
     Deno.exit(1);
   }
-  const filename = `${today()}-${slugify(title)}.md`;
+  const slug = slugify(title);
+  const filename = `${today()}-${slug}.md`;
   const path = new URL(
     `../content/feed/${SECTIONS[type]}/${filename}`,
     import.meta.url,
@@ -88,6 +90,6 @@ if (import.meta.main) {
   } catch (_) {
     // doesn't exist — good
   }
-  Deno.writeTextFileSync(path, TEMPLATES[type](title));
+  Deno.writeTextFileSync(path, TEMPLATES[type](title, slug));
   console.log(`created content/feed/${SECTIONS[type]}/${filename}`);
 }

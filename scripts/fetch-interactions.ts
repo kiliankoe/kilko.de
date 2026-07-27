@@ -276,6 +276,9 @@ export function extractSocialLinks(markdown: string): string[] {
 }
 
 export function pagePathFor(section: string, filename: string, markdown: string): string {
+  // posts carry a path override placing them at /blog/<slug>/
+  const path = markdown.match(/^path\s*=\s*"(.+)"$/m)?.[1];
+  if (path) return `/${path.replace(/^\/|\/$/g, "")}/`;
   const slug = markdown.match(/^slug\s*=\s*"(.+)"$/m)?.[1] ??
     filename.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, "");
   return `/feed/${section}/${slug}/`;

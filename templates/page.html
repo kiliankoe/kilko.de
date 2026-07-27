@@ -12,7 +12,7 @@
 <section>
   <article{% if is_original %} class="h-entry"{% endif %}>
     <p class="feed-item-meta">
-      <a class="feed-item-category" href="/feed/{{ category }}">{{ category }}</a>
+      <a class="feed-item-category" href="{{ cards::category_url(category=category) | trim }}">{{ category }}</a>
       <a{% if is_original %} class="u-url"{% endif %} href="{{ page.permalink | safe }}"><time class="dt-published" datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time></a>
       {%- if page.extra.rating and category != "reviews" %}
       <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ cards::rating_stars(rating=page.extra.rating) }}</span>

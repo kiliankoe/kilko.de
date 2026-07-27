@@ -41,6 +41,7 @@ Content.
 title = "WWDC 16"
 date = 2016-06-14T21:30:00+02:00
 slug = "wwdc-16"
+path = "blog/wwdc-16"
 +++
 
 Content.
@@ -78,6 +79,7 @@ Content.
 title = "He said \\"hi\\""
 date = 2018-07-26
 slug = "greeting"
+path = "blog/greeting"
 +++
 
 Content.

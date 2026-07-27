@@ -36,11 +36,13 @@ export function convertPost(raw: string): string {
   const { date, title, slug } = frontmatter;
   if (!date || !title || !slug) throw new Error("missing date/title/slug");
   const escapedTitle = title.replaceAll('"', '\\"');
-  // Zola takes datetimes as bare TOML values, not strings.
+  // Zola takes datetimes as bare TOML values, not strings. The path override
+  // puts posts at /blog/<slug>/ while they stay in the feed timeline.
   return `+++
 title = "${escapedTitle}"
 date = ${date}
 slug = "${urlize(slug)}"
+path = "blog/${urlize(slug)}"
 +++
 ${body}`;
 }

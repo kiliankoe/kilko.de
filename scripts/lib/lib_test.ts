@@ -178,15 +178,23 @@ body social = "https://not.in/frontmatter"`;
   assertEquals(extractSocialLinks(`+++\ntitle = "x"\n+++\nbody`), []);
 });
 
-Deno.test("pagePathFor derives the page path from slug or filename", async () => {
+Deno.test("pagePathFor derives the page path from path, slug, or filename", async () => {
   const { pagePathFor } = await import("../fetch-interactions.ts");
   assertEquals(
-    pagePathFor("posts", "2016-06-14-wwdc16.md", '+++\nslug = "wwdc-16"\n+++'),
-    "/feed/posts/wwdc-16/",
+    pagePathFor(
+      "posts",
+      "2016-06-14-wwdc16.md",
+      '+++\nslug = "wwdc-16"\npath = "blog/wwdc-16"\n+++',
+    ),
+    "/blog/wwdc-16/",
   );
   assertEquals(
-    pagePathFor("posts", "2026-08-01-new-post.md", "+++\ntitle = \"x\"\n+++"),
-    "/feed/posts/new-post/",
+    pagePathFor("reviews", "2026-08-02-dune.md", '+++\nslug = "dune"\n+++'),
+    "/feed/reviews/dune/",
+  );
+  assertEquals(
+    pagePathFor("links", "2026-08-01-some-link.md", "+++\ntitle = \"x\"\n+++"),
+    "/feed/links/some-link/",
   );
 });
 

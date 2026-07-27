@@ -367,12 +367,12 @@ Deno.test("bookwyrm maps ratings with clean titles and drops redundant content",
 Deno.test("bookwyrm maps finished-reading with normalized title, skips started", () => {
   const items = parseRssItems(bookwyrmRss, BOOKWYRM_TAGS);
   const finished = bookwyrm.mapRssItem(items[1]);
-  assertEquals(finished?.title, "Finished reading I Who Have Never Known Men by Jacqueline Harpman");
+  assertEquals(finished?.title, "I Who Have Never Known Men by Jacqueline Harpman");
   assertEquals(finished?.extra?.book_id, "416044");
   assertEquals(finished?.content_html, undefined);
   assertEquals(bookwyrm.mapRssItem(items[2]), null);
   const series = bookwyrm.mapRssItem(items[3]);
-  assertEquals(series?.title, "Finished reading Compulsory by Martha Wells");
+  assertEquals(series?.title, "Compulsory by Martha Wells");
 });
 
 Deno.test("bookwyrm keeps real review text", () => {
@@ -392,7 +392,7 @@ Deno.test("bookwyrm collapses rating + finished-reading of the same book", () =>
   bookwyrm.collapseFinishedIntoRatings(byId);
   // the finished item is absorbed by the rating, which carries everything
   assertEquals(byId["102"].collapsed_into, "101");
-  assertEquals(byId["101"].title, "Finished reading I Who Have Never Known Men by Jacqueline Harpman");
+  assertEquals(byId["101"].title, "I Who Have Never Known Men by Jacqueline Harpman");
   // a lone finished item stays untouched
   assertEquals(byId["104"].collapsed_into, undefined);
 });
