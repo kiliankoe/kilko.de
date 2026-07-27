@@ -3,6 +3,7 @@ title = "Optimizing my Life - Part One: Decluttering"
 date = 2014-02-21T20:56:22+02:00
 slug = "optimizing-part-one"
 path = "blog/optimizing-part-one"
+draft = true
 +++
 
 Optimizing every single aspect of my digital live is something I've been enjoying for years. It's the little things, being able to define a new shortcut for a task that I do all day, streamlining a complex process that has had me looking up howtos everytime I had to do it, but the same has never really held true for my life away from the keyboard. I'm definitely not what you would call messy, but the organization of my desk, room or now my apartment has never been one of my strengths. I now aim to change all of that. And there's several steps I'm taking to get there.
