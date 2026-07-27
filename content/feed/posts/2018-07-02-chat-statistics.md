@@ -31,17 +31,17 @@ So, now that everything is cleaned up and structured nicely we can ask some ques
 **Who wrote the most messages in total?**
 
 ```python
-janine = [msg for msg in msgs if msg['author'] == 'janine']
-kilian = [msg for msg in msgs if msg['author'] == 'kilian']
+her = [msg for msg in msgs if msg['author'] == 'her']
+me = [msg for msg in msgs if msg['author'] == 'me']
 
-print('janine:', len(janine), len(janine) / len(msgs) * 100)
-print('kilian:', len(kilian), len(kilian) / len(msgs) * 100)
+print('her:', len(her), len(her) / len(msgs) * 100)
+print('me:', len(me), len(me) / len(msgs) * 100)
 
-# janine: 35152 56.588161432090025
-# kilian: 26967 43.411838567909975
+# her: 35152 56.588161432090025
+# me: 26967 43.411838567909975
 ```
 
-Looks like my girlfriend (her name is Janine by the way in case you couldn't tell) takes the lead with an 8k message headstart, which accounts to 56% of all messages. Could that be due to me writing longer messages instead? 🤔
+Looks like my girlfriend takes the lead with an 8k message headstart, which accounts to 56% of all messages. Could that be due to me writing longer messages instead? 🤔
 
 
 
@@ -50,27 +50,27 @@ Looks like my girlfriend (her name is Janine by the way in case you couldn't tel
 ```python
 import re
 
-wordcount_janine = 0
-for msg in janine:
+wordcount_her = 0
+for msg in her:
     count = len(re.findall(r'\w+', msg['text']))
-    wordcount_janine += count
-print('janine')
-print('words total:', wordcount_janine)
-print('avg words/msg:', wordcount_janine / len(janine))
+    wordcount_her += count
+print('her')
+print('words total:', wordcount_her)
+print('avg words/msg:', wordcount_her / len(her))
 
-wordcount_kilian = 0
-for msg in kilian:
+wordcount_me = 0
+for msg in me:
     count = len(re.findall(r'\w+', msg['text']))
-    wordcount_kilian += count
-print('\nkilian')
-print('words total:', wordcount_kilian)
-print('avg words/msg:', wordcount_kilian / len(kilian))
+    wordcount_me += count
+print('\nme')
+print('words total:', wordcount_me)
+print('avg words/msg:', wordcount_me / len(me))
 
-# janine
+# her
 # words total: 216606
 # avg words/msg: 6.16198224852071
 
-# kilian
+# me
 # words total: 198979
 # avg words/msg: 7.378610894797345
 ```
