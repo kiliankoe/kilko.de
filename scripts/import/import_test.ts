@@ -270,10 +270,20 @@ Deno.test("github mapEvent keeps releases and foreign merged PRs only", () => {
     repo: { name: "kiliankoe/dvb" },
     payload: {
       action: "published",
-      release: { html_url: "https://github.com/kiliankoe/dvb/releases/v1", tag_name: "v1.0.0", name: null },
+      release: {
+        html_url: "https://github.com/kiliankoe/dvb/releases/v1",
+        tag_name: "v1.0.0",
+        name: null,
+        body: "## Changes\n- fixed <a> handling",
+      },
     },
   });
   assertEquals(release?.title, "Released kiliankoe/dvb v1.0.0");
+  assertEquals(release?.extra?.repo_name, "kiliankoe/dvb");
+  assertEquals(
+    release?.content_html,
+    "<p>## Changes<br>- fixed &lt;a&gt; handling</p>",
+  );
 
   const push = github.mapEvent({
     id: "2",
@@ -307,6 +317,15 @@ Deno.test("github mapEvent keeps releases and foreign merged PRs only", () => {
     },
   });
   assertEquals(foreignPr?.title, "Merged PR in someoneelse/project: Fix a bug");
+});
+
+Deno.test("github releaseNotesHtml truncates long notes", () => {
+  assertEquals(github.releaseNotesHtml(null), undefined);
+  assertEquals(github.releaseNotesHtml("  "), undefined);
+  const long = "x".repeat(600);
+  const html = github.releaseNotesHtml(long)!;
+  assertEquals(html.includes("…"), true);
+  assertEquals(html.length < 520, true);
 });
 
 function bookwyrmRssItem(id: string, title: string, pubDate: string, description: string): string {

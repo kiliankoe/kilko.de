@@ -79,6 +79,7 @@
     {# books render their cover next to the blurb above #}
     {% if page.extra.media and category != "books" %}{{ cards::media_grid(media=page.extra.media) }}{% endif %}
     {% if page.extra.card %}{{ cards::link_card(card=page.extra.card) }}{% endif %}
+    {% if page.extra.repo %}{{ cards::repo_card(repo=page.extra.repo) }}{% endif %}
     {% if page.extra.thread %}
     {%- for segment in page.extra.thread %}
     <div class="thread-segment">

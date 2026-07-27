@@ -14,6 +14,7 @@ import {
   statsPatch,
 } from "./lib/model.ts";
 import { atUriToWebUrl, textToHtml } from "./import/bluesky.ts";
+import { fetchRepoMeta } from "./import/github.ts";
 
 const WINDOW_DAYS = 30;
 const MASTODON_API = "https://chaos.social/api/v1";
@@ -233,6 +234,25 @@ async function refreshBluesky(): Promise<void> {
   console.log(`bluesky: refreshed ${count} items`);
 }
 
+// Repo stats (stars, description, …) on recent GitHub items go stale as a
+// one-time snapshot — refresh them alongside the interaction counts.
+async function refreshGithub(): Promise<void> {
+  const state = loadState("github");
+  const token = Deno.env.get("GITHUB_TOKEN") ?? undefined;
+  const refreshed = new Set<string>();
+  let count = 0;
+  for (const item of Object.values(state.items)) {
+    const repoName = item.extra?.repo_name as string | undefined;
+    if (!repoName || item.deleted || !isRecent(item.date)) continue;
+    const repo = await fetchRepoMeta(state, repoName, token, !refreshed.has(repoName));
+    refreshed.add(repoName);
+    if (repo) item.extra = { ...item.extra, repo };
+    count++;
+  }
+  saveState("github", state);
+  console.log(`github: refreshed ${count} items`);
+}
+
 // --- Social links on authored items ---------------------------------------
 // An authored post can carry `[extra] social = ["<mastodon or bsky URL>", …]`
 // (a single string works too). Interactions for those posts are fetched here
@@ -361,5 +381,6 @@ async function refreshSocialLinks(): Promise<void> {
 if (import.meta.main) {
   await refreshMastodon();
   await refreshBluesky();
+  await refreshGithub();
   await refreshSocialLinks();
 }

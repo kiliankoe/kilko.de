@@ -36,6 +36,24 @@
 </a>
 {% endmacro link_card %}
 
+{% macro repo_card(repo) %}
+<div class="repo-card">
+  {%- if repo.description %}<p class="repo-description">{{ repo.description }}</p>{% endif %}
+  <span class="feed-item-meta">
+    {%- if repo.language %}<span>{{ repo.language }}</span> · {% endif %}
+    <span title="stars">{{ repo.stars }} ★</span>
+    {%- if repo.forks > 0 %} · <span>{{ repo.forks }} forks</span>{% endif %}
+    {%- if repo.license %} · <span>{{ repo.license }}</span>{% endif %}
+    {%- if repo.homepage %} · <a href="{{ repo.homepage | safe }}">{{ repo.homepage | replace(from="https://", to="") | replace(from="http://", to="") }} ↗</a>{% endif %}
+  </span>
+  {%- if repo.topics %}
+  <span class="repo-topics">
+    {%- for topic in repo.topics %}<span class="badge">{{ topic }}</span> {% endfor %}
+  </span>
+  {%- endif %}
+</div>
+{% endmacro repo_card %}
+
 {% macro media_grid(media) %}
 <div class="feed-item-media">
   {%- for m in media %}
@@ -130,6 +148,9 @@
   {%- endif %}
   {%- if page.extra.card and not compact %}
   {{ self::link_card(card=page.extra.card) }}
+  {%- endif %}
+  {%- if page.extra.repo and not compact %}
+  {{ self::repo_card(repo=page.extra.repo) }}
   {%- endif %}
   {%- if page.extra.thread %}
   {%- set continuations = page.extra.thread | length %}

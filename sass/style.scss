@@ -344,6 +344,26 @@ h1 {
   }
 }
 
+// GitHub repo metadata card
+.repo-card {
+  border-left: 3px solid var(--card-border);
+  padding-left: 0.75rem;
+  margin-top: 0.5rem;
+
+  .repo-description {
+    margin: 0 0 0.25rem;
+  }
+}
+
+.repo-topics {
+  display: block;
+  margin-top: 0.35rem;
+
+  .badge {
+    color: var(--fg-muted);
+  }
+}
+
 // Thread continuations on detail pages
 .thread-segment {
   border-top: 1px dashed var(--card-border);
