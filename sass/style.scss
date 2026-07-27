@@ -42,6 +42,7 @@ $categories: (
 );
 
 @each $name, $color in $categories {
+
   .feed-item-#{$name},
   .detail-#{$name} {
     --cat: #{$color};
@@ -82,14 +83,14 @@ img.rounded {
 
 // Scoped to the page-level wrapper only — nested sections (e.g. Zola's
 // footnotes <section class="footnotes">) must not inherit this layout.
-body > section {
+body>section {
   padding-top: 2rem;
   text-align: center;
 }
 
 // The landing keeps its generous headroom — the konami banner's -7rem
 // offset (.center) depends on it.
-body > section.landing {
+body>section.landing {
   padding-top: 8rem;
 }
 
@@ -106,7 +107,7 @@ article {
     color: var(--fg-muted);
   }
 
-  :not(pre) > code {
+  :not(pre)>code {
     font-family: var(--mono);
     font-size: 0.88em;
     background: color-mix(in srgb, var(--fg) 7%, transparent);
@@ -135,10 +136,10 @@ article {
   }
 }
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
+// Applied to <html> by konami.js when the code is entered; the image spin
+// is driven from JS there — see the note in konami.js.
+.konami-mode body {
+  font-family: "Comic Sans MS", "Marker Felt", fantasy;
 }
 
 .center {
@@ -176,7 +177,7 @@ h1 {
 
 // Feed listing headers read as literal paths (kilko.de/feed/mastodon) —
 // set them in mono to make that the motif, links muted, current segment fg.
-.feed > h1 {
+.feed>h1 {
   font-family: var(--mono);
   font-size: 1.3rem;
   margin: 0 0 1.5rem;
@@ -249,7 +250,7 @@ h1 {
 }
 
 // Keep the chip/date row clear of the corner icons
-.feed-item-body > .feed-item-meta:first-child {
+.feed-item-body>.feed-item-meta:first-child {
   padding-right: 3.25rem;
 }
 
@@ -392,7 +393,7 @@ h1 {
 // Ratings and interaction glyphs read poorly at meta size — bump them
 .feed-item-rating,
 .feed-item-stats span,
-.webmentions > .feed-item-meta {
+.webmentions>.feed-item-meta {
   font-size: 0.95rem;
 }
 
@@ -420,7 +421,7 @@ h1 {
   color: var(--fg);
   max-width: 32rem;
 
-  > img {
+  >img {
     width: 7rem;
     object-fit: cover;
     flex-shrink: 0;
@@ -649,14 +650,14 @@ h1 {
   align-items: flex-start;
   margin: 1rem 0;
 
-  > img {
+  >img {
     width: 10rem;
     flex-shrink: 0;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   }
 
-  > .feed-item-content {
+  >.feed-item-content {
     min-width: 0;
 
     p:first-child {
