@@ -155,6 +155,26 @@ Deno.test("bluesky filters reposts and foreign replies, keeps self-threads", () 
   assertEquals(mapped.extra?.reply_root, "3root");
 });
 
+Deno.test("bluesky recordToHtml keeps the original link text when it isn't truncated", () => {
+  // "AGENTS.md" got auto-linked by Bluesky — the post never said "https://AGENTS.md"
+  const text = "Why did we go with AGENTS.md and not robots.txt?";
+  const start = text.indexOf("AGENTS.md");
+  const html = bluesky.recordToHtml({
+    text,
+    createdAt: "2026-07-25T10:00:00Z",
+    facets: [
+      {
+        index: { byteStart: start, byteEnd: start + "AGENTS.md".length },
+        features: [{ $type: "app.bsky.richtext.facet#link", uri: "https://AGENTS.md" }],
+      },
+    ],
+  });
+  assertEquals(
+    html,
+    '<p>Why did we go with <a href="https://AGENTS.md" rel="nofollow noopener">AGENTS.md</a> and not robots.txt?</p>',
+  );
+});
+
 Deno.test("bluesky recordToHtml renders full URLs from facets (byte offsets)", () => {
   // "schöne Seite: example.com/foo…" — text shows a truncated link; the facet
   // (with UTF-8 byte offsets shifted by the umlaut) holds the full URL
@@ -180,6 +200,25 @@ Deno.test("bluesky recordToHtml renders full URLs from facets (byte offsets)", (
   assertEquals(
     html,
     '<p>schöne Seite: <a href="https://example.com/foo/very/long/path" rel="nofollow noopener">https://example.com/foo/very/long/path</a> <a href="https://bsky.app/hashtag/zola" rel="nofollow noopener">#zola</a></p>',
+  );
+});
+
+Deno.test("bluesky recordToHtml expands links truncated with an ASCII ellipsis", () => {
+  const text = "see github.com/nix-communit...";
+  const start = text.indexOf("github.com");
+  const html = bluesky.recordToHtml({
+    text,
+    createdAt: "2026-07-25T10:00:00Z",
+    facets: [
+      {
+        index: { byteStart: start, byteEnd: text.length },
+        features: [{ $type: "app.bsky.richtext.facet#link", uri: "https://github.com/nix-community/nh/pull/395" }],
+      },
+    ],
+  });
+  assertEquals(
+    html,
+    '<p>see <a href="https://github.com/nix-community/nh/pull/395" rel="nofollow noopener">https://github.com/nix-community/nh/pull/395</a></p>',
   );
 });
 

@@ -99,9 +99,14 @@ export function textToHtml(text: string): string {
   return `<p>${linked.replaceAll("\n", "<br>")}</p>`;
 }
 
-// Renders post text using its rich-text facets. Bluesky post text usually
-// contains a *truncated* display form of links ("example.com/foo…") while the
-// full URL only lives in the facet — render the full URL as the link text.
+// Bluesky's composer stores long links in a truncated display form
+// ("github.com/nix-communit...") and keeps the full URL only in the facet.
+// If it's shorter we keep it as-is.
+function linkLabel(text: string, uri: string): string {
+  return /(?:\.\.\.|…)$/.test(text) ? uri : text;
+}
+
+// Renders post text using its rich-text facets.
 export function recordToHtml(record: BskyRecord): string {
   if (!record.facets?.length) return textToHtml(record.text);
 
@@ -122,7 +127,7 @@ export function recordToHtml(record: BskyRecord): string {
       f.$type.startsWith("app.bsky.richtext.facet#")
     );
     if (feature?.$type === "app.bsky.richtext.facet#link" && feature.uri) {
-      html += `<a href="${feature.uri}" rel="nofollow noopener">${escapeHtml(feature.uri)}</a>`;
+      html += `<a href="${feature.uri}" rel="nofollow noopener">${escapeHtml(linkLabel(inner, feature.uri))}</a>`;
     } else if (feature?.$type === "app.bsky.richtext.facet#mention" && feature.did) {
       html += `<a href="https://bsky.app/profile/${feature.did}" rel="nofollow noopener">${escapeHtml(inner)}</a>`;
     } else if (feature?.$type === "app.bsky.richtext.facet#tag" && feature.tag) {
