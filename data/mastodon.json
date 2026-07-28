@@ -226,13 +226,20 @@
         }
       ],
       "stats": {
-        "favs": 22,
+        "favs": 23,
         "boosts": 2,
         "replies": 2
       },
-      "stats_updated": "2026-07-27T13:09:30.221Z",
+      "stats_updated": "2026-07-28T02:47:13.935Z",
       "interactions": {
         "likes": [
+          {
+            "author": {
+              "name": "Thomas",
+              "photo": "https://assets.chaos.social/accounts/avatars/000/335/167/original/f0f9133f329813b3.jpg",
+              "url": "https://chaos.social/@HorayNarea"
+            }
+          },
           {
             "author": {
               "name": "pxie",
