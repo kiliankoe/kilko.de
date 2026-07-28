@@ -5,7 +5,6 @@
     "interactions": "deno run --allow-read --allow-write --allow-net scripts/fetch-interactions.ts",
     "webmentions": "deno run --allow-read --allow-write --allow-net --allow-env scripts/fetch-webmentions.ts",
     "backfill-bookwyrm": "deno run --allow-read --allow-write --allow-net scripts/backfill-bookwyrm.ts",
-    "blog-redirects": "deno run --allow-read --allow-write scripts/generate-blog-redirects.ts",
     "test": "deno test scripts/"
   }
 }
