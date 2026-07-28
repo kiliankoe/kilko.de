@@ -1,8 +1,9 @@
 +++
 title = "Decoding Unknown Data with Codable"
-date = 2021-08-31
 slug = "decoding-unknown-data-with-codable"
 path = "blog/decoding-unknown-data-with-codable"
+[taxonomies]
+tags = ["swift", "json"]
 +++
 
 A friend recently asked me how to decode the following JSON through Swift's `Codable` type.

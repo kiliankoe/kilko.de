@@ -1,6 +1,5 @@
 +++
 title = "Chat Statistics"
-date = 2018-07-02
 slug = "chat-statistics"
 path = "blog/chat-statistics"
 +++

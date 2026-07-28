@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% import "macros/cards.html" as cards %}
+
+{% block title %}#{{ term.name }} · {{ config.title }}{% endblock title %}
+
+{% block head %}
+<link rel="alternate" type="application/atom+xml" title="#{{ term.name }}" href="{{ get_url(path=term.path ~ 'atom.xml') | safe }}" />
+{% endblock head %}
+
+{% block content %}
+<section>
+  <article class="feed">
+    <h1><a href="/">kilko.de</a>/<a href="{{ get_url(path='tags') | safe }}">tags</a>/{{ term.name }}</h1>
+    <ul class="feed-list">
+      {% for page in term.pages %}
+      <li>{{ cards::card(page=page) }}</li>
+      {% endfor %}
+    </ul>
+  </article>
+</section>
+{% endblock content %}

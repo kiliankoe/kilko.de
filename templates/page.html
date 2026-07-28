@@ -8,7 +8,7 @@
 {%- set category = cards::category_of(page=page) | trim %}
 {# Only authored items are marked up as h-entry — imported items must never
    look like original content to microformats consumers (future federation). #}
-{%- set is_original = category in ["posts", "reviews", "links", "talks"] %}
+{%- set is_original = category in ["blog", "reviews", "links", "talks", "til"] %}
 <section>
   <article class="detail detail-{{ category }}{% if is_original %} h-entry{% endif %}">
     <p class="feed-item-meta detail-meta">

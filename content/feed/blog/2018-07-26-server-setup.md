@@ -1,8 +1,9 @@
 +++
 title = "Server Setup with traefik and docker-compose"
-date = 2018-07-26
 slug = "server-setup"
 path = "blog/server-setup"
+[taxonomies]
+tags = ["traefik", "self-hosting", "homelab", "docker"]
 +++
 
 In the [last post](/paperless) I hinted towards how I used docker-compose to run all the services I need on my server. Since someone asked me to describe it in a little more detail I'll do just that in this post. It would probably also make sense to document it a bit for myself as I know that I'm going to forget parts of it at some point 🙈

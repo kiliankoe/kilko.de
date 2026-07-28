@@ -8,6 +8,15 @@
 <section>
   <article class="feed">
     <h1><a href="/">kilko.de</a>/feed</h1>
+    <nav class="category-nav">
+      {%- for sub in section.subsections | sort %}
+      {%- set s = get_section(path=sub) %}
+      {%- if s.pages %}
+      {%- set category = sub | split(pat="/") | nth(n=1) %}
+      <span class="feed-item-{{ category }}"><a class="feed-item-category" href="{{ cards::category_url(category=category) | trim }}">{{ category }}</a></span>
+      {%- endif %}
+      {%- endfor %}
+    </nav>
     <ul class="feed-list">
       {% for page in paginator.pages %}
       <li>{{ cards::card(page=page) }}</li>

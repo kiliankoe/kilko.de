@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Tags · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<section>
+  <article class="feed">
+    <h1><a href="/">kilko.de</a>/tags</h1>
+    <ul class="tag-list">
+      {% for term in terms %}
+      <li><a class="badge" href="{{ term.permalink | safe }}">#{{ term.name }}</a> <span class="feed-item-meta">{{ term.page_count }}</span></li>
+      {% endfor %}
+    </ul>
+  </article>
+</section>
+{% endblock content %}

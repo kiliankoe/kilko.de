@@ -3,8 +3,8 @@
 
 {% macro category_of(page) %}{{ page.relative_path | split(pat="/") | nth(n=1) }}{% endmacro category_of %}
 
-{# posts have their canonical listing at /blog, everything else under /feed #}
-{% macro category_url(category) %}{% if category == "posts" %}/blog{% else %}/feed/{{ category }}{% endif %}{% endmacro category_url %}
+{# blog posts have their canonical listing at /blog, everything else under /feed #}
+{% macro category_url(category) %}{% if category == "blog" %}/blog{% else %}/feed/{{ category }}{% endif %}{% endmacro category_url %}
 
 {% macro rating_stars(rating) %}{% set full = rating | round(method="floor") | int %}{% for i in range(end=full) %}★{% endfor %}{% if rating - full >= 0.5 %}½{% endif %}{% endmacro rating_stars %}
 
@@ -147,6 +147,13 @@
   <span class="feed-item-meta">
     <a class="feed-item-category" href="{{ self::category_url(category=category) | trim }}">{{ category }}</a>
     <a class="feed-item-permalink" href="{{ page.permalink | safe }}"><time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time></a>
+    {%- if page.taxonomies.tags %}
+    <span class="feed-item-tags">
+      {%- for tag in page.taxonomies.tags %}
+      <a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">#{{ tag }}</a>
+      {%- endfor %}
+    </span>
+    {%- endif %}
     {%- if page.extra.rating %}
     <span class="feed-item-rating" title="{{ page.extra.rating }} of 5">{{ self::rating_stars(rating=page.extra.rating) }}</span>
     {%- endif %}
@@ -163,7 +170,8 @@
   {%- if page.extra.content_html %}
   <div class="feed-item-content">{{ page.extra.content_html | safe }}</div>
   {%- else %}
-  {%- if category == "reviews" or category == "links" %}
+  {# short-form categories show their full text in the feed, not a summary #}
+  {%- if category in ["reviews", "links", "til"] %}
   <div class="feed-item-content">{{ page.content | safe }}</div>
   {%- elif page.summary %}
   <div class="feed-item-summary">{{ page.summary | safe }} <a href="{{ page.permalink | safe }}">read more →</a></div>

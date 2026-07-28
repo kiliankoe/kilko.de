@@ -1,6 +1,6 @@
 +++
-title = "Posts"
-redirect_to = "blog"
+title = "TIL"
+template = "section-feed.html"
 page_template = "page.html"
 sort_by = "date"
 paginate_by = 20

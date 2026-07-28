@@ -1,11 +1,11 @@
 // Generates redirect stubs in ../blog/docs/ pointing old blog.kilian.io URLs
-// at their new home under kilko.de/feed/posts/. Run this only once kilko.de
+// at their new home under kilko.de/blog/. Run this only once kilko.de
 // is live — it overwrites the rendered post pages in the old blog's repo
 // (commit + push there separately). Other files (images, index.xml) are left
 // untouched; feed readers keep the frozen index.xml since meta refresh
 // doesn't apply to them.
 
-const POSTS = new URL("../content/feed/posts/", import.meta.url);
+const POSTS = new URL("../content/feed/blog/", import.meta.url);
 const BLOG_DOCS = new URL("../../blog/docs/", import.meta.url);
 
 function stub(target: string): string {

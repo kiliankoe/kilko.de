@@ -3,11 +3,11 @@
 //   deno task new review "Dune: Part Three"
 //   deno task new link "Interesting Article"
 //   deno task new talk "My Talk"
+//   deno task new til "Zola sections can be transparent"
 
 const TEMPLATES: Record<string, (title: string, slug: string) => string> = {
   post: (title, slug) => `+++
 title = "${title}"
-date = ${today()}
 path = "blog/${slug}"
 [taxonomies]
 tags = []
@@ -19,7 +19,6 @@ tags = []
 `,
   review: (title) => `+++
 title = "${title}"
-date = ${today()}
 [taxonomies]
 tags = []
 [extra]
@@ -32,7 +31,6 @@ rating = 3.5          # out of 5, halves allowed
 `,
   link: (title) => `+++
 title = "${title}"
-date = ${today()}
 [extra]
 url = ""
 # via = ""
@@ -41,7 +39,6 @@ url = ""
 `,
   talk: (title) => `+++
 title = "${title}"
-date = ${today()}
 [extra]
 event = ""
 event_url = ""
@@ -50,13 +47,21 @@ event_url = ""
 +++
 
 `,
+  til: (title) => `+++
+title = "${title}"
+[taxonomies]
+tags = []
++++
+
+`,
 };
 
 const SECTIONS: Record<string, string> = {
-  post: "posts",
+  post: "blog",
   review: "reviews",
   link: "links",
   talk: "talks",
+  til: "til",
 };
 
 export function slugify(title: string): string {

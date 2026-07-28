@@ -341,7 +341,7 @@ async function fetchSocialEntry(ref: SocialRef) {
 }
 
 async function refreshSocialLinks(): Promise<void> {
-  const sections = ["posts", "reviews", "links", "talks"];
+  const sections = ["blog", "reviews", "links", "talks", "til"];
   const result: Record<string, unknown[]> = {};
   let count = 0;
   for (const section of sections) {

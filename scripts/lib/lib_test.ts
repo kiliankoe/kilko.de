@@ -182,7 +182,7 @@ Deno.test("pagePathFor derives the page path from path, slug, or filename", asyn
   const { pagePathFor } = await import("../fetch-interactions.ts");
   assertEquals(
     pagePathFor(
-      "posts",
+      "blog",
       "2016-06-14-wwdc16.md",
       '+++\nslug = "wwdc-16"\npath = "blog/wwdc-16"\n+++',
     ),
