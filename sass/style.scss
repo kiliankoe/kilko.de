@@ -76,6 +76,16 @@ img {
   max-width: 100%;
 }
 
+// Responsive 16:9 embeds (talk recordings etc.) — width follows the column,
+// height derives from aspect-ratio so it stays contained on any viewport.
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  margin: 1.5rem 0;
+}
+
 img.rounded {
   border-radius: 50%;
   overflow: hidden;
