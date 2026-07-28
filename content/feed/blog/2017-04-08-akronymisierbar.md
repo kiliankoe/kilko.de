@@ -3,6 +3,8 @@ title = "Akronymisierbar"
 date = 2017-04-08T22:06:26+02:00
 slug = "akronymisierbar"
 path = "blog/akronymisierbar"
+[taxonomies]
+tags = ["podcasts"]
 +++
 
 I'm a podcast addict. I have been for a few years now and I can't seem to stop. [Podcastprofile](https://podcastprofile.com/kiliankoe) has a not very current list of all the feeds I'm subscribed to.

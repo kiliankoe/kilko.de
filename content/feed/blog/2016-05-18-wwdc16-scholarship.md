@@ -3,6 +3,8 @@ title = "WWDC 16 Scholarship"
 date = 2016-05-18T02:21:05+02:00
 slug = "wwdc-16-scholarship"
 path = "blog/wwdc-16-scholarship"
+[taxonomies]
+tags = ["wwdc"]
 +++
 
 Apple was gracious enough to grant me a WWDC scholarship this year. I’m still blown away!

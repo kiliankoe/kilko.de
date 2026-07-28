@@ -3,6 +3,8 @@ title = "Reverse Engineering iOS Apps"
 date = 2017-05-30T12:30:38+02:00
 slug = "reverse-engineering-ios"
 path = "blog/reverse-engineering-ios"
+[taxonomies]
+tags = ["reverse-engineering", "iOS"]
 +++
 
 <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/lArXWiVWImk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>

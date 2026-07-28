@@ -3,6 +3,8 @@ title = "Docker Swift Runtime"
 date = 2018-01-29T12:25:00+01:00
 slug = "docker-swift-runtime"
 path = "blog/docker-swift-runtime"
+[taxonomies]
+tags = ["swift", "docker"]
 +++
 
 I recently wrote a small [Vapor](https://vapor.codes) web app in Swift which I then wanted to deploy on my server inside a docker container. Not having all too much experience with docker my simple Dockerfile looked something like this.

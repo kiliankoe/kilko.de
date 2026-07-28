@@ -3,6 +3,8 @@ title = "Paperless"
 date = 2018-07-20T12:00:00+02:00
 slug = "paperless"
 path = "blog/paperless"
+[taxonomies]
+tags = ["paperless", "self-hosting", "documents"]
 +++
 
 For the past few years I've been scanning all paper correspondence, be that something I receive via snail-mail, invoices, contracts or whatever else. This has been a huge improvement over not doing so. Before I had troubles finding documents when I needed them and usually had them lying around at home, not at hand when necessary.

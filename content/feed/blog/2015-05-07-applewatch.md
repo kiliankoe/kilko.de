@@ -3,6 +3,7 @@ title = "Why I'll be keeping my Apple Watch"
 date = 2015-05-07T02:04:26+02:00
 slug = "applewatch"
 path = "blog/applewatch"
+draft = true
 +++
 
 ![](/img/applewatch.jpg)

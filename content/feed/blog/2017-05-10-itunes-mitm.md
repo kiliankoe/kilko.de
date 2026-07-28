@@ -3,15 +3,17 @@ title = "Downloading older iOS app versions with iTunes"
 date = 2017-05-10T15:04:18+02:00
 slug = "itunes-mitm"
 path = "blog/itunes-mitm"
+[taxonomies]
+tags = ["iOS"]
 +++
 
 **Update** (2017-09-23):
-Apple recently removed the App Store entirely from iTunes (a welcome move), which kinda broke the entire workflow here. It is however still possible to download IPA files to your Mac through the use of [Apple Configurator 2](https://itunes.apple.com/de/app/apple-configurator-2/id1037126344?l=en&mt=12). 
+Apple recently removed the App Store entirely from iTunes (a welcome move), which kinda broke the entire workflow here. It is however still possible to download IPA files to your Mac through the use of [Apple Configurator 2](https://itunes.apple.com/de/app/apple-configurator-2/id1037126344?l=en&mt=12).
 
 1. Buy and download the app via your iOS device
 2. Open Apple Configurator and login under "Account"
 3. Connect your device, then go to "Add" > "Application" and choose the app in question from your purchase history
-4. A dialog will open asking you if you want to overwrite the app or continue in another fashion. As long as this dialog is open, the IPA file will be cached in `~/Library/Group Containers/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/`. 
+4. A dialog will open asking you if you want to overwrite the app or continue in another fashion. As long as this dialog is open, the IPA file will be cached in `~/Library/Group Containers/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/`.
 
 This process at least helps with downloading current IPA files. The act of downloading older versions is left as an exercise to the reader. I have to add that I haven't checked if it's still possible, I'm just guessing that it doesn't differ too much from the process outlined below.
 

@@ -3,6 +3,8 @@ title = "Automatically Increment Your Xcode Project's Build Number"
 date = 2016-11-09T13:43:52+01:00
 slug = "xcode-buildnumber"
 path = "blog/xcode-buildnumber"
+[taxonomies]
+tags = ["xcode"]
 +++
 
 Those of us who use Xcode to build, run and deploy projects of ours have probably run into an issue where we've forgotten to increment the build number before trying to deploy a project.
