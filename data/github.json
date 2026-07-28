@@ -63,6 +63,21 @@
           "public-transport"
         ],
         "homepage": "https://apps.repebble.com/c5a2a3ecd8ac487ab39411d8"
+      },
+      "kiliankoe/kilko.de": {
+        "name": "kiliankoe/kilko.de",
+        "description": "My homepage and public feed",
+        "language": "TypeScript",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "blog",
+          "homepage",
+          "personal-blog",
+          "personal-site",
+          "personal-website"
+        ],
+        "homepage": "https://kilko.de/"
       }
     }
   }
