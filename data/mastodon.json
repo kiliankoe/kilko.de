@@ -762,7 +762,8 @@
         "boosts": 1,
         "replies": 2
       },
-      "stats_updated": "2026-07-27T13:09:30.225Z"
+      "stats_updated": "2026-07-27T13:09:30.225Z",
+      "deleted": true
     },
     "114782946208630239": {
       "id": "114782946208630239",
@@ -1099,7 +1100,27 @@
         "boosts": 3,
         "replies": 4
       },
-      "stats_updated": "2026-07-27T19:03:31.349Z"
+      "stats_updated": "2026-07-27T19:03:31.349Z",
+      "thread_root": "113823686554131205"
+    },
+    "113823686554131205": {
+      "id": "113823686554131205",
+      "date": "2025-01-13T23:40:23.445Z",
+      "url": "https://chaos.social/@kilian/113823686554131205",
+      "content_html": "<p>Ich hab mir vor ein paar Tagen einen Bondrucker gekauft, weil... wieso auch nicht. Da hängt jetzt ein <a href=\"https://chaos.social/tags/raspberrypi\" class=\"mention hashtag\" rel=\"nofollow noopener\">#<span>raspberrypi</span></a> dran und als erstes proof of concept kann ich schon mal bei Bedarf random Sudokus drucken 😁</p>",
+      "content_text": "Ich hab mir vor ein paar Tagen einen Bondrucker gekauft, weil... wieso auch nicht. Da hängt jetzt ein #raspberrypi dran und als erstes proof of concept kann ich schon mal bei Bedarf random Sudokus drucken 😁",
+      "media": [
+        {
+          "url": "/media/mastodon/113823686554131205-0.mp4",
+          "alt": "Kurzes Video welches eine Apple Watch zeigt, auf der ein Button mit der Beschriftung \"Print Sudoku\" gedrückt wird (in der Shortcuts App). Daraufhin kommt aus dem Bondrucker dahinter ein Sudoku auf einem blauen Bon."
+        }
+      ],
+      "stats": {
+        "favs": 17,
+        "boosts": 4,
+        "replies": 2
+      },
+      "stats_updated": "2026-08-01T03:19:08.730Z"
     }
   },
   "meta": {
