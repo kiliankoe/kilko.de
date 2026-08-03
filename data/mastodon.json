@@ -1136,13 +1136,20 @@
       "content_html": "<p>We should have the person that named the Walkie-Talkie name every object.</p>",
       "content_text": "We should have the person that named the Walkie-Talkie name every object.",
       "stats": {
-        "favs": 9,
+        "favs": 10,
         "boosts": 1,
         "replies": 0
       },
-      "stats_updated": "2026-08-03T03:20:53.596Z",
+      "stats_updated": "2026-08-03T09:52:50.890Z",
       "interactions": {
         "likes": [
+          {
+            "author": {
+              "name": "pxie",
+              "photo": "https://assets.chaos.social/cache/accounts/avatars/115/798/017/228/952/974/original/93eb8a33199ed85f.png",
+              "url": "https://mastodon.de/@pxie"
+            }
+          },
           {
             "author": {
               "name": "Johannes Ebeling",
