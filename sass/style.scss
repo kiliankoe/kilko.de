@@ -92,6 +92,14 @@ img.rounded {
   height: 15rem;
 }
 
+// An image alone in its paragraph reads as a figure, so center it; images
+// sitting next to text stay inline.
+.e-content p>img:only-child,
+.feed-item-content p>img:only-child {
+  display: block;
+  margin: 0 auto;
+}
+
 // Scoped to the page-level wrapper only — nested sections (e.g. Zola's
 // footnotes <section class="footnotes">) must not inherit this layout.
 body>section {
