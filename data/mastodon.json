@@ -1136,13 +1136,27 @@
       "content_html": "<p>We should have the person that named the Walkie-Talkie name every object.</p>",
       "content_text": "We should have the person that named the Walkie-Talkie name every object.",
       "stats": {
-        "favs": 7,
+        "favs": 9,
         "boosts": 1,
         "replies": 0
       },
-      "stats_updated": "2026-08-02T13:35:39.833Z",
+      "stats_updated": "2026-08-03T03:20:53.596Z",
       "interactions": {
         "likes": [
+          {
+            "author": {
+              "name": "Johannes Ebeling",
+              "photo": "https://assets.chaos.social/cache/accounts/avatars/113/737/957/824/516/250/original/1df620b5d0965a74.jpeg",
+              "url": "https://gruene.social/@technocidal"
+            }
+          },
+          {
+            "author": {
+              "name": "ubahnverleih",
+              "photo": "https://assets.chaos.social/accounts/avatars/000/335/168/original/68b49905c372ffc5.jpg",
+              "url": "https://chaos.social/@ubahnverleih"
+            }
+          },
           {
             "author": {
               "name": "Ückück :ueckueck: :pd:​ :af:",
