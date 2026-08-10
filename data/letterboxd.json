@@ -957,6 +957,26 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/363836"
       }
+    },
+    "letterboxd-watch-1443813501": {
+      "id": "letterboxd-watch-1443813501",
+      "date": "2026-08-09T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/wreck-it-ralph/1/",
+      "title": "Wreck-It Ralph (2012)",
+      "content_html": " <p>Watched on Sunday August 9, 2026.</p>",
+      "content_text": " Watched on Sunday August 9, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/6/9/1/5/4/69154-wreck-it-ralph-0-600-0-900-crop.jpg?v=3c4fe486b3",
+          "alt": "Wreck-It Ralph"
+        }
+      ],
+      "extra": {
+        "rating": 4.5,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/82690"
+      }
     }
   }
 }
