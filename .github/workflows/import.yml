@@ -48,12 +48,16 @@ jobs:
             git commit -m "import: refresh external activity"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
 
   # Pushes made with GITHUB_TOKEN don't trigger the push workflow,
-  # so the deploy is invoked explicitly.
+  # so the deploy is invoked explicitly. github.sha still points at
+  # the pre-import commit, so the pushed commit is passed in as the
+  # ref to build.
   deploy:
     needs: import
     if: ${{ needs.import.outputs.changed == 'true' }}
@@ -62,3 +66,5 @@ jobs:
       pages: write
       id-token: write
     uses: ./.github/workflows/build-deploy.yml
+    with:
+      ref: ${{ needs.import.outputs.sha }}
