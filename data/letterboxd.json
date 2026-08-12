@@ -977,6 +977,26 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/82690"
       }
+    },
+    "letterboxd-watch-1445945950": {
+      "id": "letterboxd-watch-1445945950",
+      "date": "2026-08-11T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/ralph-breaks-the-internet/1/",
+      "title": "Ralph Breaks the Internet (2018)",
+      "content_html": " <p>Watched on Tuesday August 11, 2026.</p>",
+      "content_text": " Watched on Tuesday August 11, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/3/3/8/8/8/3/338883-ralph-breaks-the-internet-0-600-0-900-crop.jpg?v=12b4f9e3d0",
+          "alt": "Ralph Breaks the Internet"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/404368"
+      }
     }
   }
 }
