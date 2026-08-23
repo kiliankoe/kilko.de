@@ -1015,6 +1015,44 @@
         "rating": 3,
         "tmdb_url": "https://www.themoviedb.org/movie/1612018"
       }
+    },
+    "letterboxd-watch-1464633377": {
+      "id": "letterboxd-watch-1464633377",
+      "date": "2026-08-22T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/frozen-2/2/",
+      "title": "Frozen II (2019)",
+      "content_html": " <p>Watched on Saturday August 22, 2026.</p>",
+      "content_text": " Watched on Saturday August 22, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/2/5/8/1/2/7/258127-frozen-ii-0-600-0-900-crop.jpg?v=2684fe54fc",
+          "alt": "Frozen II"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/330457"
+      }
+    },
+    "letterboxd-watch-1464632501": {
+      "id": "letterboxd-watch-1464632501",
+      "date": "2026-08-18T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/girl-interrupted/",
+      "title": "Girl, Interrupted (1999)",
+      "content_html": " <p>Watched on Tuesday August 18, 2026.</p>",
+      "content_text": " Watched on Tuesday August 18, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/sm/upload/1x/ad/d5/5d/vp46lgVDiFdT4Hw5WIISOPwnMaH-0-600-0-900-crop.jpg?v=d07803f1c3",
+          "alt": "Girl, Interrupted"
+        }
+      ],
+      "extra": {
+        "rating": 4,
+        "tmdb_url": "https://www.themoviedb.org/movie/3558"
+      }
     }
   }
 }
