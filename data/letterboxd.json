@@ -1053,6 +1053,24 @@
         "rating": 4,
         "tmdb_url": "https://www.themoviedb.org/movie/3558"
       }
+    },
+    "letterboxd-watch-1465029550": {
+      "id": "letterboxd-watch-1465029550",
+      "date": "2026-08-23T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/the-invite-2026/",
+      "title": "The Invite (2026)",
+      "content_html": " <p>Watched on Sunday August 23, 2026.</p>",
+      "content_text": " Watched on Sunday August 23, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/8/5/4/8/3/1/854831-the-invite-2026-0-600-0-900-crop.jpg?v=ee72905e48",
+          "alt": "The Invite"
+        }
+      ],
+      "extra": {
+        "rating": 4,
+        "tmdb_url": "https://www.themoviedb.org/movie/950028"
+      }
     }
   }
 }
