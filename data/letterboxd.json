@@ -1071,6 +1071,24 @@
         "rating": 4,
         "tmdb_url": "https://www.themoviedb.org/movie/950028"
       }
+    },
+    "letterboxd-watch-1468222695": {
+      "id": "letterboxd-watch-1468222695",
+      "date": "2026-08-25T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/whatever-it-takes-2024/",
+      "title": "Whatever It Takes (2024)",
+      "content_html": " <p>Watched on Tuesday August 25, 2026.</p>",
+      "content_text": " Watched on Tuesday August 25, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/1/1/1/2/8/9/7/1112897-whatever-it-takes-2024-0-600-0-900-crop.jpg?v=733ae2697f",
+          "alt": "Whatever It Takes"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "tmdb_url": "https://www.themoviedb.org/movie/1229905"
+      }
     }
   }
 }
