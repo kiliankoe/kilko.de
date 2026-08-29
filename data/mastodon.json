@@ -693,7 +693,8 @@
         "boosts": 1,
         "replies": 1
       },
-      "stats_updated": "2026-07-27T13:09:30.225Z"
+      "stats_updated": "2026-07-27T13:09:30.225Z",
+      "deleted": true
     },
     "115101698218413718": {
       "id": "115101698218413718",
@@ -1323,6 +1324,19 @@
         "replies": 0
       },
       "stats_updated": "2026-08-28T21:55:42.626Z"
+    },
+    "112584915253227119": {
+      "id": "112584915253227119",
+      "date": "2024-06-09T05:04:33.470Z",
+      "url": "https://chaos.social/@kilian/112584915253227119",
+      "content_html": "<p>Das <a href=\"https://chaos.social/tags/SZFahrradfest\" class=\"mention hashtag\" rel=\"nofollow noopener\">#<span>SZFahrradfest</span></a> auf den Wahlsonntag zu legen fühlt sich schon fast ein wenig wie ein Move der Autolobby an 🙈</p>",
+      "content_text": "Das #SZFahrradfest auf den Wahlsonntag zu legen fühlt sich schon fast ein wenig wie ein Move der Autolobby an 🙈",
+      "stats": {
+        "favs": 14,
+        "boosts": 7,
+        "replies": 2
+      },
+      "stats_updated": "2026-08-29T20:40:44.787Z"
     }
   },
   "meta": {
