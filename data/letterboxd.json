@@ -1089,6 +1089,24 @@
         "rating": 3.5,
         "tmdb_url": "https://www.themoviedb.org/movie/1229905"
       }
+    },
+    "letterboxd-watch-1472964275": {
+      "id": "letterboxd-watch-1472964275",
+      "date": "2026-08-28T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/its-whats-inside/",
+      "title": "It&#039;s What&#039;s Inside (2024)",
+      "content_html": " <p>Watched on Friday August 28, 2026.</p>",
+      "content_text": " Watched on Friday August 28, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/9/4/9/0/5/3/949053-its-whats-inside-0-600-0-900-crop.jpg?v=ea1abf3c49",
+          "alt": "It&#039;s What&#039;s Inside"
+        }
+      ],
+      "extra": {
+        "rating": 2.5,
+        "tmdb_url": "https://www.themoviedb.org/movie/1052280"
+      }
     }
   }
 }
