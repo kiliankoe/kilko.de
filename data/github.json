@@ -46,6 +46,30 @@
           "homepage": "https://kilko.de/"
         }
       }
+    },
+    "14447962268": {
+      "id": "14447962268",
+      "date": "2026-09-03T12:28:24Z",
+      "extra": {
+        "repo_name": "kiliankoe/yaac",
+        "repo": {
+          "name": "kiliankoe/yaac",
+          "description": "review and browse your anki collections right inside your terminal",
+          "language": "Rust",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "anki",
+            "anki-flashcards",
+            "cli",
+            "terminal-based",
+            "terminal-ui"
+          ],
+          "license": "AGPL-3.0"
+        }
+      },
+      "url": "https://github.com/kiliankoe/yaac",
+      "title": "Open-sourced kiliankoe/yaac"
     }
   },
   "meta": {
@@ -78,6 +102,21 @@
           "personal-website"
         ],
         "homepage": "https://kilko.de/"
+      },
+      "kiliankoe/yaac": {
+        "name": "kiliankoe/yaac",
+        "description": "review and browse your anki collections right inside your terminal",
+        "language": "Rust",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "anki",
+          "anki-flashcards",
+          "cli",
+          "terminal-based",
+          "terminal-ui"
+        ],
+        "license": "AGPL-3.0"
       }
     }
   }
