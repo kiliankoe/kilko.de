@@ -4770,6 +4770,68 @@
           "alt": "Jacqueline Harpman, Ros Schwartz: I Who Have Never Known Men (Paperback, 2019, Vintage)"
         }
       ]
+    },
+    "12443470": {
+      "id": "12443470",
+      "date": "2026-09-04T05:36:48.000Z",
+      "url": "https://bookwyrm.social/user/kilian/generatednote/12443470",
+      "title": "Der Wolkenatlas by David Mitchell",
+      "extra": {
+        "book_id": "670693",
+        "book": "Der Wolkenatlas",
+        "author": "David Mitchell",
+        "subtitle": "Roman",
+        "published_date": "2012-11-18",
+        "publishers": [
+          "Rowohlt"
+        ],
+        "languages": [
+          "German"
+        ],
+        "isbn13": "9783499240362",
+        "openlibrary_url": "https://openlibrary.org/books/OL25424398M",
+        "authors": [
+          "David Mitchell"
+        ]
+      },
+      "media": [
+        {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/ec0d8efc-b651-42a8-b137-2937083b7f0a.jpeg",
+          "alt": "David Mitchell: Der Wolkenatlas (Paperback, German language, 2012, Rowohlt)"
+        }
+      ],
+      "collapsed_into": "12443471"
+    },
+    "12443471": {
+      "id": "12443471",
+      "date": "2026-09-04T05:37:03.000Z",
+      "url": "https://bookwyrm.social/user/kilian/reviewrating/12443471",
+      "title": "Der Wolkenatlas by David Mitchell",
+      "extra": {
+        "rating": 3.5,
+        "book_id": "670693",
+        "book": "Der Wolkenatlas",
+        "subtitle": "Roman",
+        "published_date": "2012-11-18",
+        "publishers": [
+          "Rowohlt"
+        ],
+        "languages": [
+          "German"
+        ],
+        "isbn13": "9783499240362",
+        "openlibrary_url": "https://openlibrary.org/books/OL25424398M",
+        "authors": [
+          "David Mitchell"
+        ],
+        "author": "David Mitchell"
+      },
+      "media": [
+        {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/ec0d8efc-b651-42a8-b137-2937083b7f0a.jpeg",
+          "alt": "David Mitchell: Der Wolkenatlas (Paperback, German language, 2012, Rowohlt)"
+        }
+      ]
     }
   },
   "meta": {
@@ -6503,6 +6565,25 @@
           "Sergej Lukianenko"
         ]
       },
+      "670693": {
+        "cover": {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/ec0d8efc-b651-42a8-b137-2937083b7f0a.jpeg",
+          "alt": "David Mitchell: Der Wolkenatlas (Paperback, German language, 2012, Rowohlt)"
+        },
+        "subtitle": "Roman",
+        "published_date": "2012-11-18",
+        "publishers": [
+          "Rowohlt"
+        ],
+        "languages": [
+          "German"
+        ],
+        "isbn13": "9783499240362",
+        "openlibrary_url": "https://openlibrary.org/books/OL25424398M",
+        "authors": [
+          "David Mitchell"
+        ]
+      },
       "764227": {
         "cover": {
           "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/304cdb3e-796c-4bf8-8ccb-d6dfa3af3704.jpeg",
@@ -7169,7 +7250,8 @@
       "https://bookwyrm.social/author/137323": "Philipp Ruch",
       "https://bookwyrm.social/author/47852": "Liv Strömquist",
       "https://bookwyrm.social/author/295292": "Suzie Miller",
-      "https://bookwyrm.social/author/134583": "John Green"
+      "https://bookwyrm.social/author/134583": "John Green",
+      "https://bookwyrm.social/author/41380": "David Mitchell"
     }
   }
 }
