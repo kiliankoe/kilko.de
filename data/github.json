@@ -70,6 +70,32 @@
       },
       "url": "https://github.com/kiliankoe/yaac",
       "title": "Open-sourced kiliankoe/yaac"
+    },
+    "14515596196": {
+      "id": "14515596196",
+      "date": "2026-09-05T09:12:03Z",
+      "extra": {
+        "repo_name": "kiliankoe/sans",
+        "repo": {
+          "name": "kiliankoe/sans",
+          "description": "learn bone/neo comfortably via lessons in the terminal",
+          "language": "Rust",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "bone-layout",
+            "keyboard-layout",
+            "learning",
+            "neo-layout",
+            "terminal",
+            "terminal-ui",
+            "typing-practice",
+            "typing-tutor"
+          ]
+        }
+      },
+      "url": "https://github.com/kiliankoe/sans",
+      "title": "Open-sourced kiliankoe/sans"
     }
   },
   "meta": {
@@ -117,6 +143,23 @@
           "terminal-ui"
         ],
         "license": "AGPL-3.0"
+      },
+      "kiliankoe/sans": {
+        "name": "kiliankoe/sans",
+        "description": "learn bone/neo comfortably via lessons in the terminal",
+        "language": "Rust",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "bone-layout",
+          "keyboard-layout",
+          "learning",
+          "neo-layout",
+          "terminal",
+          "terminal-ui",
+          "typing-practice",
+          "typing-tutor"
+        ]
       }
     }
   }
