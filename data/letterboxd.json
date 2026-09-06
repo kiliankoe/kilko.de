@@ -1107,6 +1107,24 @@
         "rating": 2.5,
         "tmdb_url": "https://www.themoviedb.org/movie/1052280"
       }
+    },
+    "letterboxd-watch-1483877619": {
+      "id": "letterboxd-watch-1483877619",
+      "date": "2026-09-05T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/bohemian-rhapsody/",
+      "title": "Bohemian Rhapsody (2018)",
+      "content_html": " <p>Watched on Saturday September 5, 2026.</p>",
+      "content_text": " Watched on Saturday September 5, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/3/5/8/2/2/2/358222-bohemian-rhapsody-0-600-0-900-crop.jpg?v=e24822a0b4",
+          "alt": "Bohemian Rhapsody"
+        }
+      ],
+      "extra": {
+        "rating": 2.5,
+        "tmdb_url": "https://www.themoviedb.org/movie/424694"
+      }
     }
   }
 }
