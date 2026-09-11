@@ -96,6 +96,48 @@
       },
       "url": "https://github.com/kiliankoe/sans",
       "title": "Open-sourced kiliankoe/sans"
+    },
+    "14852639928": {
+      "id": "14852639928",
+      "date": "2026-09-08T13:42:53Z",
+      "extra": {
+        "repo_name": "kiliankoe/actual-tui",
+        "repo": {
+          "name": "kiliankoe/actual-tui",
+          "description": "terminal UI client for actual budget",
+          "language": "TypeScript",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "actual-budget",
+            "terminal-ui"
+          ]
+        }
+      },
+      "url": "https://github.com/kiliankoe/actual-tui",
+      "title": "Open-sourced kiliankoe/actual-tui"
+    },
+    "14846300920": {
+      "id": "14846300920",
+      "date": "2026-09-11T08:33:47Z",
+      "extra": {
+        "repo_name": "kiliankoe/charon",
+        "repo": {
+          "name": "kiliankoe/charon",
+          "description": "learn bone in stages",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "bone",
+            "bone-layout",
+            "keyboard-layout",
+            "learning"
+          ]
+        }
+      },
+      "url": "https://github.com/kiliankoe/charon",
+      "title": "Open-sourced kiliankoe/charon"
     }
   },
   "meta": {
@@ -159,6 +201,30 @@
           "terminal-ui",
           "typing-practice",
           "typing-tutor"
+        ]
+      },
+      "kiliankoe/actual-tui": {
+        "name": "kiliankoe/actual-tui",
+        "description": "terminal UI client for actual budget",
+        "language": "TypeScript",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "actual-budget",
+          "terminal-ui"
+        ]
+      },
+      "kiliankoe/charon": {
+        "name": "kiliankoe/charon",
+        "description": "learn bone in stages",
+        "language": "Python",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "bone",
+          "bone-layout",
+          "keyboard-layout",
+          "learning"
         ]
       }
     }
