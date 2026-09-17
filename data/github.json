@@ -153,6 +153,29 @@
       },
       "url": "https://github.com/kiliankoe/arches",
       "title": "Open-sourced kiliankoe/arches"
+    },
+    "15212261753": {
+      "id": "15212261753",
+      "date": "2026-09-17T10:34:17Z",
+      "extra": {
+        "repo_name": "kiliankoe/woknallts",
+        "repo": {
+          "name": "kiliankoe/woknallts",
+          "description": "Wo knallt's gerade in Dresden?",
+          "language": "TypeScript",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "dresden",
+            "fireworks",
+            "map",
+            "opendata"
+          ],
+          "homepage": "woknallts.dresden.lol"
+        }
+      },
+      "url": "https://github.com/kiliankoe/woknallts",
+      "title": "Open-sourced kiliankoe/woknallts"
     }
   },
   "meta": {
@@ -247,6 +270,20 @@
         "language": "Rust",
         "stars": 0,
         "forks": 0
+      },
+      "kiliankoe/woknallts": {
+        "name": "kiliankoe/woknallts",
+        "description": "Wo knallt's gerade in Dresden?",
+        "language": "TypeScript",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "dresden",
+          "fireworks",
+          "map",
+          "opendata"
+        ],
+        "homepage": "woknallts.dresden.lol"
       }
     }
   }
