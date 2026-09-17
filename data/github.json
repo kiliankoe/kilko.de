@@ -176,6 +176,21 @@
       },
       "url": "https://github.com/kiliankoe/woknallts",
       "title": "Open-sourced kiliankoe/woknallts"
+    },
+    "15218277284": {
+      "id": "15218277284",
+      "date": "2026-09-17T07:38:07Z",
+      "extra": {
+        "repo_name": "kiliankoe/jellyfin-plugin-betternextup",
+        "repo": {
+          "name": "kiliankoe/jellyfin-plugin-betternextup",
+          "language": "C#",
+          "stars": 1,
+          "forks": 0
+        }
+      },
+      "url": "https://github.com/kiliankoe/jellyfin-plugin-betternextup",
+      "title": "Open-sourced kiliankoe/jellyfin-plugin-betternextup"
     }
   },
   "meta": {
@@ -284,6 +299,12 @@
           "opendata"
         ],
         "homepage": "woknallts.dresden.lol"
+      },
+      "kiliankoe/jellyfin-plugin-betternextup": {
+        "name": "kiliankoe/jellyfin-plugin-betternextup",
+        "language": "C#",
+        "stars": 1,
+        "forks": 0
       }
     }
   }
