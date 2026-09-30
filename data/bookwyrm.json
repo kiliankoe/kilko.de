@@ -4832,6 +4832,68 @@
           "alt": "David Mitchell: Der Wolkenatlas (Paperback, German language, 2012, Rowohlt)"
         }
       ]
+    },
+    "12657362": {
+      "id": "12657362",
+      "date": "2026-09-30T07:55:45.000Z",
+      "url": "https://bookwyrm.social/user/kilian/reviewrating/12657362",
+      "title": "This Inevitable Ruin by Matt Dinniman",
+      "extra": {
+        "rating": 5,
+        "book_id": "2346620",
+        "book": "This Inevitable Ruin",
+        "description": "<p>IT'S TIME FOR WAR, FOLKS. The seventh explosive installment in Matt Dinniman’s best selling LitRPG series and all's unfair in love and war ... \"Dungeon Crawler Carl is legit awesome\" #1 New York Times bestselling author Brandon Sanderson***Strategy, alliances, pitched battles, betrayal . . . It all makes for great fun and even greater television. The ninth floor. Faction Wars. Nine armies enter, led by rich and powerful aliens from across the galaxy. The winning team must capture and hold the castle at the very centre of the battlefield. But thanks to Carl, Donut, and Katia, this season is different. For the first time ever, the crawlers have their own army. The NPCs, who are normally used as nothing but cannon fodder, have become fully self-aware and have formed an unprecedented team of their own. And it’s not just the crawlers who are at risk this Faction Wars. Any combatant who dies on the battlefield stays in the ground. For Donut and Katia, the stakes are even higher. No matter who wins the war, only one of them will be allowed to leave this level. If they all want to survive, they’re going to need a littlehelp. This is it. This is what they’ve been fighting toward. This is war.</p>",
+        "published_date": "2026-03-12",
+        "publishers": [
+          "Michael Joseph Ltd"
+        ],
+        "languages": [
+          "English",
+          "engelsk"
+        ],
+        "isbn13": "9780241829936",
+        "authors": [
+          "Matt Dinniman"
+        ],
+        "author": "Matt Dinniman"
+      },
+      "media": [
+        {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/73643235-dcf2-4db3-a9ef-37fd9c2bbfa6.jpeg",
+          "alt": "Matt Dinniman: This Inevitable Ruin (Hardcover, 2026, Michael Joseph Ltd)"
+        }
+      ]
+    },
+    "12657372": {
+      "id": "12657372",
+      "date": "2026-09-30T07:56:22.000Z",
+      "url": "https://bookwyrm.social/user/kilian/generatednote/12657372",
+      "title": "This Inevitable Ruin by Matt Dinniman",
+      "extra": {
+        "book_id": "1769329",
+        "book": "This Inevitable Ruin",
+        "author": "Matt Dinniman",
+        "description": "<p>Nine armies, each led by rich and powerful aliens from across the galaxy. Each team has one objective: to capture and hold the castle at the very center of the battlefield. Strategy, alliances, pitched battles, and, of course, betrayal... It all makes for great fun and even greater television.</p>\n<p>After all, none of these powerful aliens really die when they’re playing war.</p>\n<p>Except this time. This time, winner takes all. Those who fall, stay in the ground.</p>\n<p>As the AI continues its rapid decline, Carl and company take advantage of the chaos. For the first time ever, the crawlers are fighting back. They are now one of the nine teams. And this season, there’s a tenth army on the playing field. The NPCs, who are normally used as nothing but cannon fodder, have become fully self-aware and formed a team of their own.</p>\n<p>For Donut and Katia, the stakes are even higher. Only one of them will be allowed to leave this level.</p>\n<p>If they all want to survive, they’re going to need a little help from a veteran or two.</p>\n<p>This is it.\nThis is what they’ve been fighting toward.\nThis is war.</p>\n<p><strong>This inevitable ruin.</strong></p>",
+        "series": "Dungeon Crawler Carl",
+        "series_number": "7",
+        "published_date": "2024-10-31",
+        "publishers": [
+          "Independently published"
+        ],
+        "languages": [
+          "English"
+        ],
+        "openlibrary_url": "https://openlibrary.org/books/OL56917601M",
+        "authors": [
+          "Matt Dinniman"
+        ]
+      },
+      "media": [
+        {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/863436c7-0ab0-4e3b-ac52-93ce30e3d129.jpeg",
+          "alt": "Matt Dinniman: This Inevitable Ruin (2024, Independently published)"
+        }
+      ]
     }
   },
   "meta": {
@@ -7158,6 +7220,25 @@
         ],
         "authors": [
           "Martha Wells"
+        ]
+      },
+      "2346620": {
+        "cover": {
+          "url": "https://bookwyrm-social.sfo3.digitaloceanspaces.com/images/covers/73643235-dcf2-4db3-a9ef-37fd9c2bbfa6.jpeg",
+          "alt": "Matt Dinniman: This Inevitable Ruin (Hardcover, 2026, Michael Joseph Ltd)"
+        },
+        "description": "<p>IT'S TIME FOR WAR, FOLKS. The seventh explosive installment in Matt Dinniman’s best selling LitRPG series and all's unfair in love and war ... \"Dungeon Crawler Carl is legit awesome\" #1 New York Times bestselling author Brandon Sanderson***Strategy, alliances, pitched battles, betrayal . . . It all makes for great fun and even greater television. The ninth floor. Faction Wars. Nine armies enter, led by rich and powerful aliens from across the galaxy. The winning team must capture and hold the castle at the very centre of the battlefield. But thanks to Carl, Donut, and Katia, this season is different. For the first time ever, the crawlers have their own army. The NPCs, who are normally used as nothing but cannon fodder, have become fully self-aware and have formed an unprecedented team of their own. And it’s not just the crawlers who are at risk this Faction Wars. Any combatant who dies on the battlefield stays in the ground. For Donut and Katia, the stakes are even higher. No matter who wins the war, only one of them will be allowed to leave this level. If they all want to survive, they’re going to need a littlehelp. This is it. This is what they’ve been fighting toward. This is war.</p>",
+        "published_date": "2026-03-12",
+        "publishers": [
+          "Michael Joseph Ltd"
+        ],
+        "languages": [
+          "English",
+          "engelsk"
+        ],
+        "isbn13": "9780241829936",
+        "authors": [
+          "Matt Dinniman"
         ]
       }
     },
