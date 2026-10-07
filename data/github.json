@@ -191,6 +191,22 @@
       },
       "url": "https://github.com/kiliankoe/jellyfin-plugin-betternextup",
       "title": "Open-sourced kiliankoe/jellyfin-plugin-betternextup"
+    },
+    "16636564967": {
+      "id": "16636564967",
+      "date": "2026-10-07T12:00:50Z",
+      "extra": {
+        "repo_name": "kiliankoe/squint",
+        "repo": {
+          "name": "kiliankoe/squint",
+          "description": "show text as large as possible, so you don't have to... squint",
+          "language": "Rust",
+          "stars": 0,
+          "forks": 0
+        }
+      },
+      "url": "https://github.com/kiliankoe/squint",
+      "title": "Open-sourced kiliankoe/squint"
     }
   },
   "meta": {
@@ -304,6 +320,13 @@
         "name": "kiliankoe/jellyfin-plugin-betternextup",
         "language": "C#",
         "stars": 1,
+        "forks": 0
+      },
+      "kiliankoe/squint": {
+        "name": "kiliankoe/squint",
+        "description": "show text as large as possible, so you don't have to... squint",
+        "language": "Rust",
+        "stars": 0,
         "forks": 0
       }
     }
