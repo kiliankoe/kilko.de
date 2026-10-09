@@ -207,6 +207,26 @@
       },
       "url": "https://github.com/kiliankoe/squint",
       "title": "Open-sourced kiliankoe/squint"
+    },
+    "16801907421": {
+      "id": "16801907421",
+      "date": "2026-10-08T19:07:58Z",
+      "extra": {
+        "repo_name": "kiliankoe/dresden.lol",
+        "repo": {
+          "name": "kiliankoe/dresden.lol",
+          "language": "Astro",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "dresden",
+            "open-data"
+          ],
+          "homepage": "https://dresden.lol/"
+        }
+      },
+      "url": "https://github.com/kiliankoe/dresden.lol",
+      "title": "Open-sourced kiliankoe/dresden.lol"
     }
   },
   "meta": {
@@ -328,6 +348,17 @@
         "language": "Rust",
         "stars": 0,
         "forks": 0
+      },
+      "kiliankoe/dresden.lol": {
+        "name": "kiliankoe/dresden.lol",
+        "language": "Astro",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "dresden",
+          "open-data"
+        ],
+        "homepage": "https://dresden.lol/"
       }
     }
   }
