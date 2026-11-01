@@ -1164,6 +1164,26 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/46838"
       }
+    },
+    "letterboxd-watch-1567259342": {
+      "id": "letterboxd-watch-1567259342",
+      "date": "2026-10-31T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/pitch-perfect/5/",
+      "title": "Pitch Perfect (2012)",
+      "content_html": " <p>Watched on Saturday October 31, 2026.</p>",
+      "content_text": " Watched on Saturday October 31, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/sm/upload/yw/kc/ma/m9/cLUMPdwCV0Dxd3P1ZkCXe7bVImI-0-600-0-900-crop.jpg?v=cd134ffb49",
+          "alt": "Pitch Perfect"
+        }
+      ],
+      "extra": {
+        "rating": 4,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/114150"
+      }
     }
   }
 }
