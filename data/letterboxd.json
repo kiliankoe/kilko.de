@@ -1184,6 +1184,26 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/114150"
       }
+    },
+    "letterboxd-watch-1567976622": {
+      "id": "letterboxd-watch-1567976622",
+      "date": "2026-11-01T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/pitch-perfect-2/3/",
+      "title": "Pitch Perfect 2 (2015)",
+      "content_html": " <p>Watched on Sunday November 1, 2026.</p>",
+      "content_text": " Watched on Sunday November 1, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/1/7/8/2/8/2/178282-pitch-perfect-2-0-600-0-900-crop.jpg?v=c4530d149e",
+          "alt": "Pitch Perfect 2"
+        }
+      ],
+      "extra": {
+        "rating": 4.5,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/254470"
+      }
     }
   }
 }
