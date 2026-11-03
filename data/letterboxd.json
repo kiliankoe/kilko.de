@@ -1204,6 +1204,26 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/254470"
       }
+    },
+    "letterboxd-watch-1569493275": {
+      "id": "letterboxd-watch-1569493275",
+      "date": "2026-11-02T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/pitch-perfect-3/1/",
+      "title": "Pitch Perfect 3 (2017)",
+      "content_html": " <p>Watched on Monday November 2, 2026.</p>",
+      "content_text": " Watched on Monday November 2, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/2/8/3/8/5/6/283856-pitch-perfect-3-0-600-0-900-crop.jpg?v=0d8bf4af68",
+          "alt": "Pitch Perfect 3"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "rewatch": true,
+        "liked": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/353616"
+      }
     }
   }
 }
