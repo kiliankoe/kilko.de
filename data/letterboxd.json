@@ -1224,6 +1224,25 @@
         "liked": true,
         "tmdb_url": "https://www.themoviedb.org/movie/353616"
       }
+    },
+    "letterboxd-watch-1576688611": {
+      "id": "letterboxd-watch-1576688611",
+      "date": "2026-11-07T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/the-inventor-out-for-blood-in-silicon-valley/1/",
+      "title": "The Inventor: Out for Blood in Silicon Valley (2019)",
+      "content_html": " <p>Watched on Saturday November 7, 2026.</p>",
+      "content_text": " Watched on Saturday November 7, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/4/9/4/7/8/5/494785-the-inventor-out-for-blood-in-silicon-valley-0-600-0-900-crop.jpg?v=e076e16cf2",
+          "alt": "The Inventor: Out for Blood in Silicon Valley"
+        }
+      ],
+      "extra": {
+        "rating": 3,
+        "rewatch": true,
+        "tmdb_url": "https://www.themoviedb.org/movie/566228"
+      }
     }
   }
 }
