@@ -1261,6 +1261,24 @@
         "rating": 4,
         "tmdb_url": "https://www.themoviedb.org/movie/170125"
       }
+    },
+    "letterboxd-watch-1586748164": {
+      "id": "letterboxd-watch-1586748164",
+      "date": "2026-11-14T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/darlings-2023/",
+      "title": "Darlings (2023)",
+      "content_html": " <p>Watched on Saturday November 14, 2026.</p>",
+      "content_text": " Watched on Saturday November 14, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/1/0/0/2/3/2/9/1002329-darlings-2023-0-600-0-900-crop.jpg?v=0ee184dfbd",
+          "alt": "Darlings"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "tmdb_url": "https://www.themoviedb.org/movie/1111392"
+      }
     }
   }
 }
