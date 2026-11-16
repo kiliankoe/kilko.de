@@ -227,6 +227,27 @@
       },
       "url": "https://github.com/kiliankoe/dresden.lol",
       "title": "Open-sourced kiliankoe/dresden.lol"
+    },
+    "20270306483": {
+      "id": "20270306483",
+      "date": "2017-01-19T20:41:35Z",
+      "extra": {
+        "repo_name": "kiliankoe/publictransport",
+        "repo": {
+          "name": "kiliankoe/publictransport",
+          "description": "🚇 client library for public transport APIs",
+          "language": "Rust",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "public-transport",
+            "public-transportation"
+          ],
+          "license": "Apache-2.0"
+        }
+      },
+      "url": "https://github.com/kiliankoe/publictransport",
+      "title": "Open-sourced kiliankoe/publictransport"
     }
   },
   "meta": {
@@ -359,6 +380,18 @@
           "open-data"
         ],
         "homepage": "https://dresden.lol/"
+      },
+      "kiliankoe/publictransport": {
+        "name": "kiliankoe/publictransport",
+        "description": "🚇 client library for public transport APIs",
+        "language": "Rust",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "public-transport",
+          "public-transportation"
+        ],
+        "license": "Apache-2.0"
       }
     }
   }
