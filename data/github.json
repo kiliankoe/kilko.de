@@ -248,6 +248,28 @@
       },
       "url": "https://github.com/kiliankoe/publictransport",
       "title": "Open-sourced kiliankoe/publictransport"
+    },
+    "20431116816": {
+      "id": "20431116816",
+      "date": "2026-10-08T11:51:21Z",
+      "extra": {
+        "repo_name": "kiliankoe/trmnl-dvb",
+        "repo": {
+          "name": "kiliankoe/trmnl-dvb",
+          "description": "show DVB/VVO departures on a TRMNL",
+          "language": "Liquid",
+          "stars": 0,
+          "forks": 0,
+          "topics": [
+            "dvb",
+            "public-transport",
+            "trmnl-plugin",
+            "vvo"
+          ]
+        }
+      },
+      "url": "https://github.com/kiliankoe/trmnl-dvb",
+      "title": "Open-sourced kiliankoe/trmnl-dvb"
     }
   },
   "meta": {
@@ -392,6 +414,19 @@
           "public-transportation"
         ],
         "license": "Apache-2.0"
+      },
+      "kiliankoe/trmnl-dvb": {
+        "name": "kiliankoe/trmnl-dvb",
+        "description": "show DVB/VVO departures on a TRMNL",
+        "language": "Liquid",
+        "stars": 0,
+        "forks": 0,
+        "topics": [
+          "dvb",
+          "public-transport",
+          "trmnl-plugin",
+          "vvo"
+        ]
       }
     }
   }
