@@ -50,6 +50,8 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
+          # .well-known/matrix
+          include-hidden-files: true
 
   deploy:
     environment:
