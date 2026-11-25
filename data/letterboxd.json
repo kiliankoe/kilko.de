@@ -1279,6 +1279,24 @@
         "rating": 3.5,
         "tmdb_url": "https://www.themoviedb.org/movie/1111392"
       }
+    },
+    "letterboxd-watch-1601967691": {
+      "id": "letterboxd-watch-1601967691",
+      "date": "2026-11-24T00:00:00.000Z",
+      "url": "https://letterboxd.com/kiliankoe/film/a-christmas-carol-1999/",
+      "title": "A Christmas Carol (1999)",
+      "content_html": " <p>Watched on Tuesday November 24, 2026.</p>",
+      "content_text": " Watched on Tuesday November 24, 2026.",
+      "media": [
+        {
+          "url": "https://a.ltrbxd.com/resized/film-poster/4/1/4/1/9/41419-a-christmas-carol-0-600-0-900-crop.jpg?v=e42188eaf1",
+          "alt": "A Christmas Carol"
+        }
+      ],
+      "extra": {
+        "rating": 3.5,
+        "tmdb_url": "https://www.themoviedb.org/movie/16716"
+      }
     }
   }
 }
